@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "mbQ9L8NeW+ktTWbWi6G2oem+P9hyYUPY9f94+yAsP/AqSqfQ0XWi6zFVVABRbqBtJbvKY32XN++ott/HjgtRdw==",
+  "success": true,
+  "projectFilePath": "Q:\\Webbutvecklare.NET\\Repos\\ASP.NET\\The-Mercer\\The_Mercer_BackEnd\\The_Mercer_BackEnd.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.17\\microsoft.aspnetcore.authentication.openidconnect.5.0.17.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.7.1\\microsoft.identitymodel.jsonwebtokens.6.7.1.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.identitymodel.logging\\6.7.1\\microsoft.identitymodel.logging.6.7.1.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.7.1\\microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.7.1\\microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.7.1\\microsoft.identitymodel.tokens.6.7.1.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.7.1\\system.identitymodel.tokens.jwt.6.7.1.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
+    "C:\\Users\\Henke\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.17\\microsoft.netcore.app.host.win-x64.5.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}
