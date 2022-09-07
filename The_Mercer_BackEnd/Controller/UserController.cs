@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace The_Mercer_BackEnd.Controller
 {
@@ -10,13 +12,21 @@ namespace The_Mercer_BackEnd.Controller
     public class UserController : ControllerBase
     {
         [HttpGet]
-        public IActionResult getTest()
+        public IActionResult getJwt()
         {
-            return Ok(new[]
+            try
             {
-                "test",
-                "JWT"
-            });
+                var token = User.Claims.First(x => x.Type == "jwtToken").Value;
+
+                return Ok(new
+                {
+                    Jwt = token
+                });
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server failure");
+            }
         }
     }
 }
