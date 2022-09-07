@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace The_Mercer_BackEnd.Contoller
+namespace The_Mercer_BackEnd.Controller
 {
     
     [ApiController]
