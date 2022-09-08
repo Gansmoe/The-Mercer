@@ -53,6 +53,7 @@ namespace The_Mercer_BackEnd
                 };
             });
 
+            services.AddCors();
             services.AddControllers();
 
         }
@@ -64,8 +65,16 @@ namespace The_Mercer_BackEnd
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
+            
             app.UseRouting();
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true)
+                .AllowCredentials());
+
             app.UseAuthentication();
             app.UseAuthorization();
             
