@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 using System.Linq;
 
 namespace The_Mercer_BackEnd.Controller
@@ -16,11 +17,14 @@ namespace The_Mercer_BackEnd.Controller
         {
             try
             {
+
                 var token = User.Claims.First(x => x.Type == "jwtToken").Value;
+                var name = User.Claims.First(u => u.Type == "name").Value;
 
                 return Ok(new
                 {
-                    Jwt = token
+                    Jwt = token,
+                    Name = name
                 });
             }
             catch (System.Exception)
