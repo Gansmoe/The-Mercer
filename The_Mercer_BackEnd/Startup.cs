@@ -13,6 +13,7 @@ using Microsoft.Identity.Web;
 using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using System.Security.Claims;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 
 namespace The_Mercer_BackEnd
 {
@@ -56,6 +57,11 @@ namespace The_Mercer_BackEnd
             services.AddCors();
             services.AddControllers();
 
+            services.AddSpaStaticFiles(cfg =>
+            {
+                cfg.RootPath = "ClientApp/the-mercer-frontend/build";
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +72,7 @@ namespace The_Mercer_BackEnd
                 app.UseDeveloperExceptionPage();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            
             
             app.UseRouting();
             app.UseCors(x => x
@@ -77,7 +83,7 @@ namespace The_Mercer_BackEnd
 
             app.UseAuthentication();
             app.UseAuthorization();
-            
+
             
 
             app.UseEndpoints(endpoints =>
@@ -87,6 +93,18 @@ namespace The_Mercer_BackEnd
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllers();
             });
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "ClientApp/the-mercer-frontend";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseReactDevelopmentServer(npmScript: "start");
+                }
+            });
+
+
         }
     }
 }
