@@ -59,7 +59,7 @@ namespace The_Mercer_BackEnd
 
             services.AddSpaStaticFiles(cfg =>
             {
-                cfg.RootPath = "ClientApp/the-mercer-frontend/build";
+                cfg.RootPath = "ClientApp/build";
             });
 
         }
@@ -96,7 +96,7 @@ namespace The_Mercer_BackEnd
 
             app.UseSpa(spa =>
             {
-                spa.Options.SourcePath = "ClientApp/the-mercer-frontend";
+                spa.Options.SourcePath = "ClientApp";
 
                 if (env.IsDevelopment())
                 {
