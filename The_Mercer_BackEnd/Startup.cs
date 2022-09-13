@@ -54,7 +54,15 @@ namespace The_Mercer_BackEnd
                 };
             });
 
-            services.AddCors();
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy(name: "development", policy => policy
+                .WithOrigins("https://localhost:5001")
+                .AllowCredentials()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+            });
+
             services.AddControllers();
 
             services.AddSpaStaticFiles(cfg =>
@@ -72,12 +80,7 @@ namespace The_Mercer_BackEnd
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .SetIsOriginAllowed(origin => true)
-                .AllowCredentials());
-
+            app.UseCors("development");
             app.UseHttpsRedirection();
             app.UseRouting();
 
@@ -92,6 +95,18 @@ namespace The_Mercer_BackEnd
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapControllers();
+            });
+
+            app.Use(async (ctx, next) =>
+            {
+                if (!ctx.User.Identity.IsAuthenticated)
+                {
+                    await ctx.ChallengeAsync(OpenIdConnectDefaults.AuthenticationScheme);
+                }
+                else
+                {
+                    await next();
+                }
             });
 
             app.UseSpa(spa =>
