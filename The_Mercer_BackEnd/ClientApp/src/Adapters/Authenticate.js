@@ -21,6 +21,6 @@ try {
   });
   return [data, null];
 } catch (error) {
-  
+  return [null, error];
 }
 }
