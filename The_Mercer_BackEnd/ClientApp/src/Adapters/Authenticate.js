@@ -12,11 +12,11 @@ export const AuthenticateRequest = async () => {
   }
 }
 
-export const HandshakeRequest = async () => {
+export const HandshakeRequest = async (mail) => {
 try {
   const { data } = await axios.get(`${BaseUrlSmartHut}/negotiate`, {
     headers: {
-      'X-MS-SIGNALR-USERID': localStorage.getItem("Mail")
+      'X-MS-SIGNALR-USERID': mail
     }
   });
   return [data, null];
