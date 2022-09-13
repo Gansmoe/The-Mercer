@@ -9,7 +9,7 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className='home-page'>
       <h1>The Mercer</h1>
       <button onClick={TestRequest}>Testa</button>
     </div>

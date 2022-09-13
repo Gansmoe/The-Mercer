@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import Home from './components/Pages/Home';
+import Footer from './components/Footer';
 import { useState, useEffect } from 'react';
 import { AuthenticateRequest } from './Adapters/Authenticate';
 import { HandshakeRequest } from './Adapters/Authenticate';
@@ -44,6 +45,9 @@ const App = () => {
           <Route path="" element={<Home />} />
         </Routes>
       </Router>
+      <div className='footer no-select'>
+          <Footer />
+      </div>
     </div>
   )
 }
