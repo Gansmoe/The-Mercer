@@ -2,11 +2,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #f4ebd4;
+    
 }
 
-.body {
+body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f4ebd4;
+    height: 100%;
+}
+
+.App {
+    background-color: #f4ebd4;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-page {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
 }
 
 .container {
@@ -19,6 +33,29 @@
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     flex-direction: column;
     
+}
+
+a {
+    color:rgb(244, 228, 174);
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(173, 162, 112);
+}
+
+.footer {
+    background-color: rgb(54, 0, 16);
+    display: flex;
+    justify-content: center;
+    margin-bottom: auto;
+}
+
+.footer-item {
+    background-color: rgb(54, 0, 16);
+    color:rgb(244, 228, 174);
+    display: flex;
+    margin: 1em;
 }
 
 .login-container {
@@ -51,3 +88,13 @@
     text-align: center;
     padding-top: 5px;
 }
+
+.no-select {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
