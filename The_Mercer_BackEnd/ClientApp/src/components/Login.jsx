@@ -7,6 +7,7 @@ const Login = ({ AuthenticateUser }) => {
 
   const submitHandler = async () => {
     const requestData = await AuthenticateRequest();
+    
     AuthenticateUser(requestData);
     
     if (requestData.status = 200) {
