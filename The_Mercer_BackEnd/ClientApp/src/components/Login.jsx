@@ -5,7 +5,8 @@ import { HandshakeRequest } from '../Adapters/Authenticate';
 
 const Login = ({ AuthenticateUser }) => {
 
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+    e.preventDefault();
     const requestData = await AuthenticateRequest();
     
     AuthenticateUser(requestData);

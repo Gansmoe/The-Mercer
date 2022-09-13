@@ -71,15 +71,15 @@ namespace The_Mercer_BackEnd
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseHttpsRedirection();
-            
-            
-            app.UseRouting();
+
             app.UseCors(x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .SetIsOriginAllowed(origin => true)
                 .AllowCredentials());
+
+            app.UseHttpsRedirection();
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
