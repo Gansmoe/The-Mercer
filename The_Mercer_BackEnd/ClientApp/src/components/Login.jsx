@@ -1,25 +1,36 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { useState } from 'react';
+import { AuthenticateRequest } from '../Adapters/Authenticate';
+import { HandshakeRequest } from '../Adapters/Authenticate';
 
-const Login = () => {
-    let navigate = useNavigate();
+const Login = ({ AuthenticateUser }) => {
 
-    const testFunction = async () => {
-      const { data } = await axios.get('https://localhost:5001/api/User', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Access-Control-Allow-Origin': '*'
-        }
-      })
-      console.log(data);
-      return data;
+  const submitHandler = async () => {
+    const requestData = await AuthenticateRequest();
+    AuthenticateUser(requestData);
+    
+    if (requestData.status = 200) {
+      const handsakeRes = await HandshakeRequest();
+      console.log(handsakeRes);
+      localStorage.setItem("SmartHutToken", handsakeRes[0].accessToken);
+      localStorage.setItem("SmartHutUrl", handsakeRes[0].url);
+    } else {
+      alert("Couldn't log in. Check that your E-mail adress is correct, otherwise contact IT-department")
     }
+  }
 
   return (
-    <div>
-        <p>Klick: <button onClick={() => testFunction()}>Microsoft Login</button></p>
+
+    <div className='container'>
+      <div className='login-info'>
+        <h1>The Mercer Hotel sensor system</h1>
+        <p>To sign in, please use your mercer hotel E-mail</p>
+      </div>
+      <div className='login-container'>
+        <form onSubmit={submitHandler}>
+          <input className='login-btn' type="submit" value="Sign in with E-mail" />
+        </form>
+      </div>
     </div>
   )
 }
