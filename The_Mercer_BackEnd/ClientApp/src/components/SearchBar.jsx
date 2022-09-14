@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
+import Rooms from "./home components/rooms";
 
 const SearchBar = (props) => {
     const [items, setItems] = useState(props.list);
@@ -28,7 +29,10 @@ const SearchBar = (props) => {
             })
                 .map((entry, key) => {
                     return (
-                        <div key={key} name={entry.roomName}>{entry.roomName}</div>
+                        <>
+                            <div key={key} name={entry.roomName}>{entry.roomName}</div>
+                            <Rooms key={entry.id} room={entry} />
+                        </>
                     );
                 })}
         </div>
