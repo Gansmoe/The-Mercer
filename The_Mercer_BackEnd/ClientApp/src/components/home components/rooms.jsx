@@ -1,9 +1,12 @@
 import React from "react";
 
-const Rooms = ({ device }) => {
+
+const Rooms = ({ room }) => {
+
+
     return (
         <div className="rooms">
-            <h5>{device.name}</h5>
+            <h5>{room.roomName}</h5>
             <button>Återställ</button>
             <i className="arrow down"></i>
         </div>
