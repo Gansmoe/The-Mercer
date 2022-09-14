@@ -14,6 +14,9 @@ using Microsoft.Extensions.Configuration;
 using System.Configuration;
 using System.Security.Claims;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using The_Mercer_BackEnd.DbContext;
+using Microsoft.EntityFrameworkCore;
+using The_Mercer_BackEnd.Repository;
 
 namespace The_Mercer_BackEnd
 {
@@ -30,6 +33,11 @@ namespace The_Mercer_BackEnd
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(options =>
+                options.UseSqlite(@"Data Source=Q:\Webbutvecklare.NET\The-Mercer\Mercer.db"));
+
+            services.AddScoped<IRoomRepository, RoomRepository>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;
