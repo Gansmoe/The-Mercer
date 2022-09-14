@@ -1,17 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { GetBuildings, GetDevices } from '../../Adapters/SmartHut'
 import Rooms from '../home components/rooms';
+import { getRoomsFromDatabase } from '../../Adapters/Database';
 
 const Home = () => {
 
   const [buildings, setBuildings] = React.useState(null);
   const [devices, setDevices] = React.useState(null);
+  const [rooms, setRooms] = React.useState([]);
 
-  const TestRequest = async () => {
-    const data = await GetBuildings();
-    setBuildings(data);
-    console.log(data);
-  }
+  useEffect(() => {
+    const getRooms = async () => {
+      const [data, error] = await getRoomsFromDatabase();
+      if (error) {
+        console.log(error);
+      } else {
+        setRooms(data);
+        console.log(data);
+      }
+    }
+
+    getRooms();
+
+  }, []);
+
 
   const TestRequest2 = async () => {
     const data = await GetDevices();
@@ -22,15 +34,11 @@ const Home = () => {
   return (
     <div className='home-page'>
       <h1>The Mercer</h1>
-      <button onClick={TestRequest}>Få byggnaden</button>
-      <button onClick={TestRequest2}>Få alla devices</button>
 
       <div className="rooms-container">
 
-        {(buildings == null) ? <></> : <p>{buildings[0].name}</p>}
-
-        {(devices == null) ? <></> : <>{devices[0].devices.map((devices) => (
-          <Rooms key={devices.id} device={devices} />
+        {(rooms == null) ? <></> : <>{rooms.map((room) => (
+          <Rooms key={room.roomId} room={room} />
         ))}</>}
 
       </div>
