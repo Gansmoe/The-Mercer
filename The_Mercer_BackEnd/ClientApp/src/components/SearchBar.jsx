@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 
-const SearchBar = () => {
-    const [items, setItems] = useState([]);
-    //const [listComponent, setListComponent] = useState(React.Component);
+const SearchBar = ({ list, component }) => {
+    const [items, setItems] = useState(list);
+    const [listComponent, setListComponent] = useState(component);
     const [searchTerm, setSearchTerm] = useState('');
 
     // Temporary Test Data
@@ -28,19 +28,23 @@ const SearchBar = () => {
         setItems(mockup);
     }, []);
 
+    const handleChange = (event) => {
+        setSearchTerm(event.target.value);
+    }
+
     return (
         <div>
-            <input className="search-bar-input" type="text" placeholder="Filter..." onChange={event => { setSearchTerm(event.target.value) }} />
-            {items.filter((val) => {
+            <input className="search-bar-input" type="text" placeholder="Filter..." onChange={handleChange} />
+            {items.filter((entry) => {
                 if (searchTerm === '') {
-                    return val;
-                } else if (val.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
-                    return val;
+                    return entry;
+                } else if (entry.name.toLowerCase().includes(searchTerm.toLocaleLowerCase())) {
+                    return entry;
                 }
             })
-                .map((room, key) => {
+                .map((entry, key) => {
                     return (
-                        <div>{room.name}, {room.temp}, {room.humid}</div>
+                        <div key={key}>{entry.name}, {entry.temp}, {entry.humid}</div>
                     );
                 })}
         </div>
