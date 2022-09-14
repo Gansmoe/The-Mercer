@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <div className='home-page'>
       <h1>The Mercer</h1>
-      {(rooms == null) ? <></> : <SearchBar list={rooms} componentType={Element.Rooms} />}
+      {(rooms == null) ? <></> : <SearchBar list={rooms} />}
       <div className="rooms-container">
 
         {(rooms == null) ? <></> : <>{rooms.map((room) => (

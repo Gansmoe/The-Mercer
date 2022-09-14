@@ -25,9 +25,22 @@ body {
 
 .search-bar-input {
     display: flex;
-    width: 50%;
+    width: 75%;
     height: 2em;
     padding-left: 1em;
+}
+
+.search-bar-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+
+.search-bar-items {
+    display: flex;
 }
 
 .container {
