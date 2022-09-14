@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { GetBuildings, GetDevices } from '../../Adapters/SmartHut'
 import Rooms from '../home components/rooms';
 import { getRoomsFromDatabase } from '../../Adapters/Database';
+import SearchBar from '../SearchBar';
 
 const Home = () => {
 
@@ -34,7 +35,7 @@ const Home = () => {
   return (
     <div className='home-page'>
       <h1>The Mercer</h1>
-
+      {(rooms == null) ? <></> : <SearchBar list={rooms} />}
       <div className="rooms-container">
 
         {(rooms == null) ? <></> : <>{rooms.map((room) => (
