@@ -18,3 +18,21 @@ export const GetBuildings = async () => {
         return [null, error]
     }
 }
+
+
+export const GetDevices = async () => {
+    const authToken = localStorage.getItem("AuthenticateToken");
+    console.log(authToken);
+    try {
+        const { data } = await axios.get(`${BaseUrlSmartHut}BuildingInfo/9eee90c3-55cb-48a1-8aa7-13b7083f2b6f/true`, {
+            method: 'GET',
+            redirect: 'follow',
+            headers: {
+                'Authorization': 'Bearer ' + authToken
+            }
+        });
+        return [data, null]
+    } catch (error) {
+        return [null, error]
+    }
+}
