@@ -29,7 +29,7 @@ namespace The_Mercer_BackEnd.Controller
                     Email = userEmail
                 });
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Server failure");
             }
