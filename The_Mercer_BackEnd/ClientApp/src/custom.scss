@@ -1,0 +1,31 @@
+
+$primary:red;
+$light:rgb(138, 96, 144);
+
+
+$navbar-light-color:rgb(44, 107, 129);
+
+
+$body-bg: rgb(63, 141, 76);
+$body-color: #111;
+
+// $colors: (
+//   "blue": $blue,
+//   "indigo": $indigo,
+//   "purple": $purple,
+//   "pink": $pink,
+//   "red": $red,
+//   "orange": $orange,
+//   "yellow": $yellow,
+//   "green": $green,
+//   "teal": $teal,
+//   "cyan": $cyan,
+//   "white": $orange,
+//   "gray": $gray-600,
+//   "gray-dark": $gray-800
+// ) !default;
+
+@import '~bootstrap/scss/bootstrap.scss';
+@import "node_modules/bootstrap/scss/bootstrap";
+
+

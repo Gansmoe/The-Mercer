@@ -8,9 +8,17 @@ import Home from './components/Pages/Home';
 import { useState, useEffect } from 'react';
 import { AuthenticateRequest } from './Adapters/Authenticate';
 import { HandshakeRequest } from './Adapters/Authenticate';
+import Header from './components/header/Header';
+import { SET_ACTIVE_USER } from './redux/slice/authSlice';
+import { useDispatch } from "react-redux";
+
+
+
 
 
 const App = () => {
+
+  const dispatch = useDispatch();
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -32,16 +40,24 @@ const App = () => {
 
     localStorage.setItem("SmartHutToken", handsakeRes[0].accessToken);
     localStorage.setItem("SmartHutUrl", handsakeRes[0].url);
-
+    
+    if (handsakeRes[0].accessToken) {
+       console.log('RRRR auth ', (handsakeRes[0].accessToken))
+       dispatch(SET_ACTIVE_USER())
+     }
   }
 
   AuthenticateUser();
-
+ 
   return (
     <div className='App'>
+      
+      <Header /> 
       <Router>
+        
         <Routes>
           <Route path="" element={<Home />} />
+          
         </Routes>
       </Router>
     </div>
