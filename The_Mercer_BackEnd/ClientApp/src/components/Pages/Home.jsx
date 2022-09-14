@@ -1,11 +1,12 @@
 import React from 'react'
 import { GetBuildings, GetDevices } from '../../Adapters/SmartHut'
+import Rooms from '../home components/rooms';
 
 const Home = () => {
 
-    const [buildings, setBuildings] = React.useState(null);
-    const [devices, setDevices] = React.useState(null);
-  
+  const [buildings, setBuildings] = React.useState(null);
+  const [devices, setDevices] = React.useState(null);
+
   const TestRequest = async () => {
     const data = await GetBuildings();
     setBuildings(data);
@@ -23,12 +24,16 @@ const Home = () => {
       <h1>The Mercer</h1>
       <button onClick={TestRequest}>Få byggnaden</button>
       <button onClick={TestRequest2}>Få alla devices</button>
-      
-      {(buildings == null) ? <p>no data</p> : <p>{buildings[0].name}</p>}
 
-      {(devices == null) ? <p>no data</p> : <p>{devices[0].devices.map((devices) => (
-        <p>{devices.name}</p>
-      ))}</p>}
+      <div className="rooms-container">
+
+        {(buildings == null) ? <></> : <p>{buildings[0].name}</p>}
+
+        {(devices == null) ? <></> : <>{devices[0].devices.map((devices) => (
+          <Rooms key={devices.id} device={devices} />
+        ))}</>}
+
+      </div>
 
     </div>
   )
