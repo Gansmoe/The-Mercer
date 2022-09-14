@@ -23,6 +23,13 @@ body {
     flex-direction: column;
 }
 
+.search-bar-input {
+    display: flex;
+    width: 50%;
+    height: 2em;
+    padding-left: 1em;
+}
+
 .container {
     width: auto;
     height: 500px;
