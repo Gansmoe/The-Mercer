@@ -28,7 +28,7 @@ const SearchBar = (props) => {
                     .map((entry, key) => {
                         return (
                             <>
-                                <Rooms key={entry.id} room={entry} />
+                                <Rooms key={entry.roomId} room={entry} />
                             </>
                         );
                     })}

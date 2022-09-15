@@ -146,7 +146,7 @@ a:hover {
     position: relative;
     border: #333 solid 2px;
     width: 311px;
-    height: 50px;
+    height: fit-content;
     margin: 30px;
     padding: 10px;
 }
@@ -162,7 +162,7 @@ a:hover {
     right: 5px;
 }
 
-.arrow:hover{
+.down:hover{
     transform: rotate(45deg) scale(1.2);
     transition: 0.1s ease-in-out;
 }
@@ -170,6 +170,29 @@ a:hover {
 .down {
     transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.up:hover{
+    transform: rotate(-135deg) scale(1.2);
+    transition: 0.1s ease-in-out;
+}
+
+.alarmBtn {
+    background-color: rgb(54, 0, 16);
+    color: rgb(244, 228, 174);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    padding-left: 3px;
+    padding-right: 3px;
+    border:#f4ebd4 solid 2px;
+    border-radius: 2px;
 }
 
 .no-select {
