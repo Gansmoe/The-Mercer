@@ -5,8 +5,8 @@ const BaseUrlSmartHut = "https://smarthut.azurewebsites.net/api"
 
 export const AuthenticateRequest = async () => {
   try {
-    const { data } = await axios.get(`${BaseUrl}/user`)
-    return [data, null];
+     const { data } = await axios.get(`${BaseUrl}/user`)
+     return [data, null];
   } catch (error) {
     return [null, error];
   }

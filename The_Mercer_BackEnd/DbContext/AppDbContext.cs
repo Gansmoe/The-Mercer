@@ -23,6 +23,7 @@ namespace The_Mercer_BackEnd.DbContext
         //Isac = DbPath[1]
         //Christian = DbPath[2]
         //Moosa = DbPath[3]
+        //Server i produktion = DbPath[4]
         //För att lägga till er path, fyll på arrayn.
     }
 }
