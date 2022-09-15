@@ -41,6 +41,8 @@ body {
 
 .search-bar-items {
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 .color-nav{
     background-color: aqua;
