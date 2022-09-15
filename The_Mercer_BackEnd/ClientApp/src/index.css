@@ -42,6 +42,13 @@ body {
 .search-bar-items {
     display: flex;
 }
+.color-nav{
+    background-color: aqua;
+}
+
+.body {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 
 .container {
     width: auto;
