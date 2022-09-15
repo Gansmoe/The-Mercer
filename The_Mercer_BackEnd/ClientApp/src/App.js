@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { Error } from './components/Pages/Error';
 import Home from './components/Pages/Home';
 import Footer from './components/Footer';
 import { useState, useEffect } from 'react';
@@ -12,10 +13,6 @@ import { HandshakeRequest } from './Adapters/Authenticate';
 import Header from './components/header/Header';
 import { SET_ACTIVE_USER } from './redux/slice/authSlice';
 import { useDispatch } from "react-redux";
-
-
-
-
 
 const App = () => {
 
@@ -41,30 +38,31 @@ const App = () => {
 
     localStorage.setItem("SmartHutToken", handsakeRes[0].accessToken);
     localStorage.setItem("SmartHutUrl", handsakeRes[0].url);
-    
+
     if (handsakeRes[0].accessToken) {
-       console.log('RRRR auth ', (handsakeRes[0].accessToken))
-       dispatch(SET_ACTIVE_USER())
-     }
+      console.log('RRRR auth ', (handsakeRes[0].accessToken))
+      dispatch(SET_ACTIVE_USER())
+    }
   }
 
   AuthenticateUser();
- 
+
   return (
     <div className='App'>
-      
-      <Header /> 
-      <Router>
-        
-        <Routes>
-          <Route path="" element={<Home />} />
-          
-        </Routes>
-      </Router>
-      <div className='footer no-select'>
+      <Error>
+        <Header />
+        <Router>
+
+          <Routes>
+            <Route path="" element={<Home />} />
+
+          </Routes>
+        </Router>
+        <div className='footer no-select'>
           <Footer />
-      </div>
-    </div>
+        </div>
+      </Error>
+    </div >
   )
 }
 
