@@ -22,6 +22,9 @@ namespace The_Mercer_BackEnd
 {
     public class Startup
     {
+        private readonly string[] DbPath = {
+            @"Data Source=Q:\Webbutvecklare.NET\The-Mercer\Mercer.db",
+            @"Data Source=C:\Users\Isac\Documents\Skola\Webbapplikationer med realtidskommunikation\The mercer backend test\The mercer\The-Mercer\Mercer.db" };
         public IConfiguration Configuration { get; }
 
         public Startup(IConfiguration configuration)
@@ -34,7 +37,7 @@ namespace The_Mercer_BackEnd
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite(@"Data Source=C:\Users\Isac\Documents\Skola\Webbapplikationer med realtidskommunikation\The mercer backend test\The mercer\The-Mercer\Mercer.db"));
+                options.UseSqlite(DbPath[0]));
 
             services.AddScoped<IRoomRepository, RoomRepository>();
 
