@@ -25,25 +25,11 @@ const Home = () => {
 
   }, []);
 
-
-  const TestRequest2 = async () => {
-    const data = await GetDevices();
-    setDevices(data);
-    console.log(data);
-  }
-
   return (
     <div className='home-page'>
-      <h1>The Mercer</h1>
-      {(rooms == null) ? <></> : <SearchBar list={rooms} />}
       <div className="rooms-container">
-
-        {(rooms == null) ? <></> : <>{rooms.map((room) => (
-          <Rooms key={room.roomId} room={room} />
-        ))}</>}
-
+      {(rooms == null) ? <></> : <SearchBar list={rooms} />}
       </div>
-
     </div>
   )
 }
