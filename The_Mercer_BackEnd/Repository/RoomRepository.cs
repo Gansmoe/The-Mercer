@@ -14,6 +14,12 @@ namespace The_Mercer_BackEnd.Repository
             _appDbContext = appDbContext;
         }
 
+        public async void CreateAlarm(AlarmLog alarm)
+        {
+            await _appDbContext.Alarms.AddAsync(alarm);
+            await _appDbContext.SaveChangesAsync();
+        }
+
         public async Task<Room[]> GetAllRoomsAsync()
         {
             IQueryable<Room> query = _appDbContext.Rooms;
