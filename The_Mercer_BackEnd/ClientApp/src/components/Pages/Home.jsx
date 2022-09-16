@@ -5,9 +5,6 @@ import { getRoomsFromDatabase } from '../../Adapters/Database';
 import SearchBar from '../SearchBar';
 
 const Home = () => {
-
-  const [buildings, setBuildings] = React.useState(null);
-  const [devices, setDevices] = React.useState(null);
   const [rooms, setRooms] = React.useState([]);
 
   useEffect(() => {
@@ -20,7 +17,6 @@ const Home = () => {
         console.log(data);
       }
     }
-
     getRooms();
 
   }, []);

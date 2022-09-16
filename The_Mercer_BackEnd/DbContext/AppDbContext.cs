@@ -16,6 +16,7 @@ namespace The_Mercer_BackEnd.DbContext
         }
 
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<AlarmLog> Alarms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite(DbPath[0]);

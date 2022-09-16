@@ -12,3 +12,15 @@ export const getRoomsFromDatabase = async () => {
         return [null, error]
     }
 }
+
+export const postAlarmToDatabase = async (Alarm) => {
+    try {
+        axios.post(`${BaseUrl}Alarm/create`, Alarm, {
+            headers: {
+                'Content-type': 'application/json'
+            }
+        })
+    } catch (error) {
+        console.log(error);
+    }
+}

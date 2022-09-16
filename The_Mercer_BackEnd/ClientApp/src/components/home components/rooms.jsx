@@ -1,5 +1,6 @@
 import React from "react";
 import { RestoreAlarm } from "../../Adapters/SmartHut";
+import { postAlarmToDatabase } from "../../Adapters/Database";
 
 export default class Rooms extends React.Component {
     constructor(props) {
@@ -24,7 +25,17 @@ export default class Rooms extends React.Component {
         //e.preventDefault();
         //ToDo, avgör om det är temp eller humid fel som ska nollställas.
         await RestoreAlarm(this.props.room.tempDevice);
-        
+        console.log(this.props.room);
+
+        let userName = localStorage.getItem("Name");
+        let userMail = localStorage.getItem("Mail");
+        var body = JSON.stringify({
+            "UserName": userName,
+            "UserMail": userMail,
+            "DeviceId": this.props.room.tempDevice
+        });
+
+        await postAlarmToDatabase(body);
     }
 
 

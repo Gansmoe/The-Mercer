@@ -6,5 +6,6 @@ namespace The_Mercer_BackEnd.Repository
     public interface IRoomRepository
     {
         Task<Room[]> GetAllRoomsAsync();
+        void CreateAlarm(AlarmLog alarm);
     }
 }
