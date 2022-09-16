@@ -1,6 +1,6 @@
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
-export const OpenSignalRConnection = async (telemetryMsg) => {
+export const OpenSignalRConnection = async (telemetryMsg, callbacks) => {
     try {
         
         //Hämta ut URL + token från LocalStorage
@@ -16,9 +16,14 @@ export const OpenSignalRConnection = async (telemetryMsg) => {
             .build(); //Bygg 
             
             
-            connection.on(telemetryMsg, data => {
-                console.log(data);
-                return data;
+            connection.on("newTelemetry", data => { //När vi får ett meddelande från servern med namnet "newTelemetry" så körs funktionen nedan
+                /* console.log("New Telemetry data: ", data); */
+                callbacks.telemetryMsg(data);
+            })
+
+            connection.on("alarmNeutralized", data => { //När vi får ett meddelande från servern med namnet "newAlarm" så körs funktionen nedan
+                /* console.log("alarmNeutralized data: ", data); */
+                callbacks.alarmMsg(data);
             })
 
             await connection.start();
