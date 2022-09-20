@@ -23,16 +23,12 @@ namespace The_Mercer_BackEnd.Repository
             await _appDbContext.SaveChangesAsync();
         }
 
-        public IEnumerable<Room> GetAlarmHistory()
+        public IEnumerable<AlarmLog> GetAlarmHistory()
         {
 
-            //var results = _appDbContext.Rooms.FromSqlRaw("Select Alarms.AlarmLogId, Rooms.RoomName, Alarms.UserName, Alarms.UserMail, Alarms.AlarmDate, Alarms.DeviceId \r\nfrom Rooms \r\ninner join Alarms ON Alarms.DeviceId = Rooms.TempDevice or alarms.DeviceId = Rooms.HumidDevice").Take(100).ToList();
-            var alarms = _appDbContext.Alarms.ToList();
-            var rooms = _appDbContext.Rooms.ToList();
-
+            var results = _appDbContext.Alarms.Include(x => x.Room).ToList();   
             
-            
-            return rooms;
+            return results;
         }
 
         public async Task<Room[]> GetAllRoomsAsync()

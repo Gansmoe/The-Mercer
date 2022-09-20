@@ -8,6 +8,6 @@ namespace The_Mercer_BackEnd.Repository
     {
         Task<Room[]> GetAllRoomsAsync();
         void CreateAlarm(AlarmLog alarm);
-        IEnumerable<Room> GetAlarmHistory();
+        IEnumerable<AlarmLog> GetAlarmHistory();
     }
 }

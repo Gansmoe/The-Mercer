@@ -49,7 +49,8 @@ export default class Rooms extends React.Component {
         var body = JSON.stringify({
             "UserName": userName,
             "UserMail": userMail,
-            "DeviceId": this.props.room.tempDevice
+            "DeviceId": this.props.room.tempDevice,
+            "RoomId": this.props.room.roomId
         });
 
         await postAlarmToDatabase(body);
