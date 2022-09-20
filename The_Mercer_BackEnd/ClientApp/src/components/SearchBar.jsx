@@ -38,9 +38,9 @@ const SearchBar = ({ list, placeholder, Comp, filterprop, customkey }) => {
                 })
                     .map((entry, key) => {
                         return (
-                            <>
-                                <Comp key={entry[customkey] ? entry[customkey] : key} room={entry} listitem={entry} />  {/* "room" is hard coded due to rooms.jsx component requiring it to be called that. Use listitem instead please. */}
-                            </>
+                            <div key={entry[customkey] ? entry[customkey] : key}>
+                                <Comp room={entry} listitem={entry} />  {/* "room" is hard coded due to rooms.jsx component requiring it to be called that. Use listitem instead please. */}
+                            </div>
                         );
                     })}
             </div>
