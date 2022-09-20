@@ -17,14 +17,14 @@ const Home = () => {
         console.log(data);
       }
     }
+    
     getRooms();
-
   }, []);
 
   return (
     <div className='home-page'>
       <div className="rooms-container">
-      {(rooms == null) ? <></> : <SearchBar list={rooms} />}
+      {(rooms == null) ? <></> : <SearchBar list={rooms} filterprop={'roomName'} customkey={'roomId'} Comp={Rooms} placeholder={'Filter rooms...'} />}
       </div>
     </div>
   )
