@@ -12,5 +12,6 @@ namespace The_Mercer_BackEnd.Models
         public DateTime AlarmDate { get; set; }
         public string DeviceId { get; set; }
         public int RoomId { get; set; }
+        public Room Room { get; set; }
     }
 }

@@ -39,7 +39,7 @@ namespace The_Mercer_BackEnd.Controller
             }
         }
         [HttpGet("getAlarms")]
-        public IEnumerable<Room> GetHistory()
+        public IEnumerable<AlarmLog> GetHistory()
         {
             try
             {
