@@ -1,29 +1,23 @@
 
-$primary:red;
-$light:rgb(138, 96, 144);
 
 
-$navbar-light-color:rgb(44, 107, 129);
 
 
-$body-bg: rgb(63, 141, 76);
-$body-color: #111;
+$navbar-light-color:rgb(244 228 174);
 
-// $colors: (
-//   "blue": $blue,
-//   "indigo": $indigo,
-//   "purple": $purple,
-//   "pink": $pink,
-//   "red": $red,
-//   "orange": $orange,
-//   "yellow": $yellow,
-//   "green": $green,
-//   "teal": $teal,
-//   "cyan": $cyan,
-//   "white": $orange,
-//   "gray": $gray-600,
-//   "gray-dark": $gray-800
-// ) !default;
+$color:rgb(244 228 174);
+// $body-bg: rgb(63, 141, 76);
+$body-color:rgb(244 228 174);
+
+$theme-colors:(
+"primary":rgb(31, 55, 104),
+"secondary":rgb(31, 55, 104),
+"danger":rgb(31, 55, 104),
+"success":rgb(244 228 174),
+"light":rgb(54 0 16),
+
+);
+
 
 @import '~bootstrap/scss/bootstrap.scss';
 @import "node_modules/bootstrap/scss/bootstrap";
