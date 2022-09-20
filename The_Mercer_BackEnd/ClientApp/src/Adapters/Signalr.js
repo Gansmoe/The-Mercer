@@ -1,6 +1,6 @@
 import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
 
-export const OpenSignalRConnection = async (telemetryMsg, callbacks) => {
+export const OpenSignalRConnection = async (callbacks) => {
     try {
         
         //Hämta ut URL + token från LocalStorage
@@ -11,7 +11,7 @@ export const OpenSignalRConnection = async (telemetryMsg, callbacks) => {
         const connection = new HubConnectionBuilder()
             .withUrl(url, {
                 accessTokenFactory: () => token //In the JavaScript client, the access token is configured by setting the accessTokenFactory field on the options object in withUrl:
-            })
+            }, () => { console.log("SignalR connection started"); })
             .configureLogging(LogLevel.Information) //signalR.LogLevel.Information: Status messages without errors. Logs Information, Warning, and Error messages. Loggas till console
             .build(); //Bygg 
             

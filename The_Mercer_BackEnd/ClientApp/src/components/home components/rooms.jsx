@@ -1,32 +1,15 @@
 import React from "react";
 import { RestoreAlarm } from "../../Adapters/SmartHut";
 import { postAlarmToDatabase } from "../../Adapters/Database";
-import { OpenSignalRConnection } from "../../Adapters/Signalr";
 
 export default class Rooms extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             rooms: [],
-            showmore: false,
-            telemetryData: [],
-            alarmData: []
+            showmore: false
         };
     }
-
-    callBacksObject = {
-        telemetryMsg: (data) => {
-            this.setState({ telemetryData: data });
-        },
-        alarmMsg: (data) => {
-            this.setState({ alarmData: data });
-        }
-    }
-
-    componentDidMount() {
-        OpenSignalRConnection("newTelemetry", this.callBacksObject);
-    }
-
 
     eventHandler = (event) => {
         if (this.state.showmore === false) {
@@ -58,8 +41,6 @@ export default class Rooms extends React.Component {
 
 
     render() {
-        console.log("Telemetrydata in Rooms: ", this.state.telemetryData);
-        console.log("Alarmdata in Rooms: ", this.state.alarmData);
         return (
             <div className="rooms">
                 <h5>{this.props.room.roomName}</h5>
