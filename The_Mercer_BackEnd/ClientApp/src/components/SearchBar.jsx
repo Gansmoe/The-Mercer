@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 /**
  * React Component that renders a search box that can filter items from an array where each item is a definable component type. 
-* @param {Array} props.list - An Array, preferably containing objects with a unique 'id' key. Otherwise the index order is used.
+* @param {Array} props.list - An Array of objects that has properties which can be used for filtering.
 * @param {String} props.placeholder - The default text string within the search box.
 * @param {React.Component} props.Comp - Specifies what kind of React Component to draw for each list item.
 * @param {*} props.filterprop - The property that should be used for filtering.
@@ -38,9 +38,9 @@ const SearchBar = ({ list, placeholder, Comp, filterprop, customkey }) => {
                 })
                     .map((entry, key) => {
                         return (
-                            <>
-                                <Comp key={entry[customkey] ? entry[customkey] : key} room={entry} listitem={entry} />  {/* "room" is hard coded due to rooms.jsx component requiring it to be called that. Use listitem instead please. */}
-                            </>
+                            <div key={entry[customkey] ? entry[customkey] : key}>
+                                <Comp room={entry} listitem={entry} />  {/* "room" is hard coded due to rooms.jsx component requiring it to be called that. Use listitem instead please. */}
+                            </div>
                         );
                     })}
             </div>
