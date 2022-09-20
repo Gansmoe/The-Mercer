@@ -2,6 +2,7 @@ import React from 'react'
 import { getRoomsFromDatabase } from '../../Adapters/Database';
 import SearchBar from '../SearchBar';
 import { OpenSignalRConnection } from '../../Adapters/Signalr';
+import Rooms from '../home components/rooms';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -45,7 +46,7 @@ export default class Home extends React.Component {
     return (
       <div className='home-page' >
         <div className="rooms-container">
-          {(this.state.rooms == null) ? <></> : <SearchBar list={this.state.rooms} />}
+        {(this.state.rooms == null) ? <></> : <SearchBar list={this.state.rooms} filterprop={'roomName'} customkey={'roomId'} Comp={Rooms} placeholder={'Filter rooms...'} />}
         </div>
       </div>
     )
