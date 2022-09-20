@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using The_Mercer_BackEnd.Models;
 
 namespace The_Mercer_BackEnd.Repository
@@ -7,5 +8,6 @@ namespace The_Mercer_BackEnd.Repository
     {
         Task<Room[]> GetAllRoomsAsync();
         void CreateAlarm(AlarmLog alarm);
+        IEnumerable<Room> GetAlarmHistory();
     }
 }
