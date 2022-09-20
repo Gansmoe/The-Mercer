@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using The_Mercer_BackEnd.Models;
@@ -34,6 +36,20 @@ namespace The_Mercer_BackEnd.Controller
             {
 
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Server failure");
+            }
+        }
+        [HttpGet("getAlarms")]
+        public IEnumerable<Room> GetHistory()
+        {
+            try
+            {
+                var results = _roomRepository.GetAlarmHistory();
+                return results;
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }
