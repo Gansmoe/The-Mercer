@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 /**
  * React Component that renders a search box that can filter items from an array where each item is a definable component type. 
-* @param {Array} props.list - An Array, preferably containing objects with a unique 'id' key. Otherwise the index order is used.
+* @param {Array} props.list - An Array of objects that has properties which can be used for filtering.
 * @param {String} props.placeholder - The default text string within the search box.
 * @param {React.Component} props.Comp - Specifies what kind of React Component to draw for each list item.
 * @param {*} props.filterprop - The property that should be used for filtering.
