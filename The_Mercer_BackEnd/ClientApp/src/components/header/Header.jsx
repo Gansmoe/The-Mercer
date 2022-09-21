@@ -1,5 +1,5 @@
 import { NavLink,Button, Container, Nav, Navbar } from "react-bootstrap";
-
+import { Link } from "react-router-dom";
 import "../../custom.scss";
 import { ShowOnLogOut,ShowOnLogin } from "./HiddenLinkes";
 import { useDispatch } from "react-redux";
@@ -28,8 +28,8 @@ function Header() {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
+            <Link className="nav-links" to="/alarms">Alarms</Link>
+            <Link className="nav-links" to="/home">Telemetry</Link>
           </Nav>
 
           <ShowOnLogOut>

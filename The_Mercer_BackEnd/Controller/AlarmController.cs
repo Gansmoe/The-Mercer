@@ -43,7 +43,9 @@ namespace The_Mercer_BackEnd.Controller
         {
             try
             {
+                
                 var results = _roomRepository.GetAlarmHistory();
+                
                 return results;
             }
             catch (Exception)

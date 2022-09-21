@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using The_Mercer_BackEnd.DbContext;
 using The_Mercer_BackEnd.Models;
 using System;
+using Microsoft.AspNetCore.Mvc;
 
 namespace The_Mercer_BackEnd.Repository
 {
@@ -25,8 +26,11 @@ namespace The_Mercer_BackEnd.Repository
 
         public IEnumerable<AlarmLog> GetAlarmHistory()
         {
-
-            var results = _appDbContext.Alarms.Include(x => x.Room).ToList();   
+            var results = _appDbContext.Alarms.Include(x => x.Room).ToList();
+            foreach (var result in results)
+            {
+                 result.AlarmDate.ToString("MM/dd/yyyy HH:mm");
+            }
             
             return results;
         }
