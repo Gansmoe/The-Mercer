@@ -26,7 +26,7 @@ namespace The_Mercer_BackEnd.Repository
 
         public IEnumerable<AlarmLog> GetAlarmHistory()
         {
-            var results = _appDbContext.Alarms.Include(x => x.Room).ToList();
+            var results = _appDbContext.Alarms.Include(x => x.Room).ToList().OrderByDescending(x => x.AlarmLogId);
             foreach (var result in results)
             {
                  result.AlarmDate.ToString("MM/dd/yyyy HH:mm");
