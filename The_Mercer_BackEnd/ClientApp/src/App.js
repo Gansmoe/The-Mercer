@@ -13,6 +13,7 @@ import { HandshakeRequest } from './Adapters/Authenticate';
 import Header from './components/header/Header';
 import { SET_ACTIVE_USER } from './redux/slice/authSlice';
 import { useDispatch } from "react-redux";
+import Alarms from './components/Pages/Alarms';
 
 const App = () => {
 
@@ -34,14 +35,15 @@ const App = () => {
     localStorage.setItem("Mail", requestData[0].email);
     localStorage.setItem("Name", requestData[0].name);
 
-    const handsakeRes = await HandshakeRequest(requestData[0].email);
+    const handshakeRes = await HandshakeRequest(requestData[0].email);
 
-    localStorage.setItem("SmartHutToken", handsakeRes[0].accessToken);
-    localStorage.setItem("SmartHutUrl", handsakeRes[0].url);
+    localStorage.setItem("SmartHutToken", handshakeRes[0].accessToken);
+    localStorage.setItem("SmartHutUrl", handshakeRes[0].url);
 
-    if (handsakeRes[0].accessToken) {
-      console.log('RRRR auth ', (handsakeRes[0].accessToken))
-      dispatch(SET_ACTIVE_USER(requestData[0]))
+
+    if (handshakeRes[0].accessToken) {
+      console.log('RRRR auth ', (handshakeRes[0].accessToken))
+      dispatch(SET_ACTIVE_USER())
     }
   }
 
@@ -50,12 +52,11 @@ const App = () => {
   return (
     <div className='App'>
       <Error>
+      <Router>
         <Header />
-        <Router>
-
           <Routes>
-            <Route path="" element={<Home />} />
-
+            <Route path="/home" element={<Home />}></Route>
+            <Route path="/alarms" element={<Alarms />}></Route>
           </Routes>
         </Router>
         <div className='footer no-select'>

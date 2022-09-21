@@ -24,3 +24,15 @@ export const postAlarmToDatabase = async (Alarm) => {
         console.log(error);
     }
 }
+
+
+export const getAlarmHistory = async () => {
+
+    try {
+        const { data } = await axios.get(`${BaseUrl}alarm/getalarms`);
+        return [data, null]
+
+    } catch (error) {
+        return [null, error]
+    }
+}

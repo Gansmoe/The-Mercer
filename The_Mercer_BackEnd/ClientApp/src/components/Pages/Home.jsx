@@ -3,6 +3,7 @@ import { getRoomsFromDatabase } from '../../Adapters/Database';
 import SearchBar from '../SearchBar';
 import { OpenSignalRConnection } from '../../Adapters/Signalr';
 import Rooms from '../home components/rooms';
+import { MatchValues } from '../../Helpers/Calculation';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -14,6 +15,8 @@ export default class Home extends React.Component {
       alarmData: []
     };
   }
+
+
 
   getRooms = async () => {
     const [data, error] = await getRoomsFromDatabase();
@@ -28,6 +31,19 @@ export default class Home extends React.Component {
   componentDidMount() {
     OpenSignalRConnection(this.callBacksObject);
     this.getRooms();
+
+  }
+
+  componentDidUpdate() {
+    let object = {
+      "deviceId": "2ecf8aef-bd10-4a53-af03-558ef550f8f7",
+      "value": "23"
+  }
+
+  setTimeout(object, 1000);
+  
+    const test = MatchValues(object, this.state.rooms)
+    console.log("testDataFörRum :)", test);
   }
 
   callBacksObject = {
@@ -42,11 +58,12 @@ export default class Home extends React.Component {
   render() {
     console.log("Telemetrydata in Home: ", this.state.telemetryData);
     console.log("Alarmdata in Home: ", this.state.alarmData);
+    console.log("Rooms ", this.state.rooms);
 
     return (
       <div className='home-page' >
         <div className="rooms-container">
-        {(this.state.rooms == null) ? <></> : <SearchBar list={this.state.rooms} filterprop={'roomName'} customkey={'roomId'} Comp={Rooms} placeholder={'Filter rooms...'} />}
+          {(this.state.rooms == null) ? <></> : <SearchBar list={this.state.rooms} filterprop={'roomName'} customkey={'roomId'} Comp={Rooms} placeholder={'Filter rooms...'} />}
         </div>
       </div>
     )
