@@ -40,6 +40,7 @@ const App = () => {
     localStorage.setItem("SmartHutToken", handshakeRes[0].accessToken);
     localStorage.setItem("SmartHutUrl", handshakeRes[0].url);
 
+
     if (handshakeRes[0].accessToken) {
       console.log('RRRR auth ', (handshakeRes[0].accessToken))
       dispatch(SET_ACTIVE_USER())
