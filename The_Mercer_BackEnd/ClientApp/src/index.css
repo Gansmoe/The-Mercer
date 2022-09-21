@@ -67,6 +67,7 @@ body {
 
 .body {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
 }
 
 .container {
@@ -220,4 +221,10 @@ a:hover {
     color: black;
     text-decoration: none;
     font-size: large;
+    color: rgb(244, 228, 174);
 }
+
+.h1-brand-nav {
+    color: rgb(244, 228, 174);
+}
+
