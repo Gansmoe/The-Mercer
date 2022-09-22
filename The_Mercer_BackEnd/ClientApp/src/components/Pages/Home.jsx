@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { getRoomsFromDatabase } from '../../Adapters/Database';
 import SearchBar from '../SearchBar';
 import { OpenSignalRConnection } from '../../Adapters/Signalr';
 import Rooms from '../home components/rooms';
 import { MatchValues } from '../../Helpers/Calculation';
-import { getTempData } from '../../Helpers/mockupobject';
+import { copyTelemetryData, getTempData } from '../../Helpers/mockupobject';
+import { previousDay } from 'date-fns';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -12,9 +13,8 @@ export default class Home extends React.Component {
     this.state = {
       buildings: [],
       rooms: [],
-      telemetryData: null,
-      alarmData: [],
-      tempData: null
+      telemetryData: [],
+      alarmData: []
     };
   }
 
@@ -31,14 +31,15 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    /* OpenSignalRConnection(this.callBacksObject); */
+    OpenSignalRConnection(this.callBacksObject);
     this.getRooms();
-/*     getTempData(this.callBacksObject); */
   }
 
   componentDidUpdate() {
-    getTempData(this.callBacksObject);
-    /* this.setState({ rooms: MatchValues(this.state.telemetryData, this.state.rooms)}); */
+
+    setTimeout(() => {
+      this.setState({ rooms: MatchValues(this.state.telemetryData, this.state.rooms)});
+    }, 100);
   }
 
   callBacksObject = {
@@ -47,13 +48,15 @@ export default class Home extends React.Component {
     },
     alarmMsg: (data) => {
       this.setState({ alarmData: data });
+    },
+    tempData: (data) => {
+      this.setState({ tempData: data });
     }
   }
 
   render() {
-    console.log("Telemetrydata in Home: ", this.state.telemetryData);
-/*     console.log("Alarmdata in Home: ", this.state.alarmData); */
-    console.log("Rooms ", this.state.rooms);
+    console.log("Rooms: ", this.state.rooms);
+    console.log("TelemetryData: ", this.state.telemetryData);
 
     return (
       <div className='home-page' >
