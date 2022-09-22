@@ -69,3 +69,19 @@ export const RestoreAlarm = async (id) => {
     }
 
 }
+
+
+export const getUnits = async () => {
+    try {
+        const { data } = await axios.get(`${BaseUrlSmartHut}Unit`, {
+            method: 'GET',
+            redirect: 'follow',
+            headers: {
+                'Authorization': 'Bearer ' + authToken
+            }
+        });
+        return [data, null]
+    } catch (error) {
+        return [null, error]
+    }
+}
