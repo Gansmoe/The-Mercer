@@ -29,9 +29,27 @@ body {
     margin-top: 25%;
     padding: 1em;
     text-align: center;
-    border-radius: 1em;
+    border-radius: 0.5em;
     width: 50%;
     z-index: 10;
+}
+
+.error-title {
+    color: rgb(216, 93, 93);
+}
+
+.error-refresh-btn {
+    padding: 1em;
+    border-style: none;
+    border-radius: 0.5em;
+    background-color: rgb(216, 93, 93);
+    color: rgb(131, 5, 5);
+}
+
+.error-refresh-btn:hover {
+    background-color: rgb(212, 53, 53);
+    color: white;
+    scale: 1.1;
 }
 
 .home-page {
