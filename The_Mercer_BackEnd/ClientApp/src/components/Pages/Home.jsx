@@ -4,8 +4,6 @@ import SearchBar from '../SearchBar';
 import { OpenSignalRConnection } from '../../Adapters/Signalr';
 import Rooms from '../home components/rooms';
 import { MatchValues } from '../../Helpers/Calculation';
-import { copyTelemetryData, getTempData } from '../../Helpers/mockupobject';
-import { previousDay } from 'date-fns';
 import { getUnitsForDevices } from '../../Adapters/SmartHut';
 import { GetDevices } from '../../Adapters/SmartHut';
 
@@ -57,12 +55,6 @@ export default class Home extends React.Component {
     this.getRooms();
     this.getUnitFromSmartHut();
     this.getDevicesFromSmartHut();
-  }
-
-  componentDidUpdate() {
-    // setTimeout(() => {
-    //   this.setState({ rooms: MatchValues(this.state.telemetryData, this.state.rooms, this.state.range)});
-    // }, 100);
   }
 
   callBacksObject = {
