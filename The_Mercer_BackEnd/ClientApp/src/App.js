@@ -14,12 +14,14 @@ import Header from './components/header/Header';
 import { SET_ACTIVE_USER } from './redux/slice/authSlice';
 import { useDispatch } from "react-redux";
 import Alarms from './components/Pages/Alarms';
+import NoticeStack from './components/NoticeStack';
 
 
 const App = () => {
 
   const dispatch = useDispatch();
   const [token, setToken] = useState("");
+  const [noticeList, setNoticeList] = useState([]);
 
   useEffect(() => {
     const getToken = localStorage.getItem("AuthenticateToken");
@@ -55,7 +57,9 @@ const App = () => {
       <Error>
       <Router>
         <Header />
+        <NoticeStack list={noticeList}/>
           <Routes>
+          <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/alarms" element={<Alarms />}></Route>
           </Routes>
