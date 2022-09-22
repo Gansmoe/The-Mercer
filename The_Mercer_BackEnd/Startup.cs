@@ -40,6 +40,7 @@ namespace The_Mercer_BackEnd
                 options.UseSqlite(DbPath[0]));
 
             services.AddScoped<IRoomRepository, RoomRepository>();
+            
 
             services.Configure<CookiePolicyOptions>(options =>
             {

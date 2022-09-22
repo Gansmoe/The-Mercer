@@ -3,8 +3,7 @@ import { useEffect } from 'react'
 import { getAlarmHistory } from '../../Adapters/Database';
 import Table from 'react-bootstrap/Table';
 import { useState } from 'react';
-import format from 'date-fns/format';
-import parse from 'date-fns/esm/fp/parse/index.js';
+import moment from 'moment';
 
 
 const Alarms = () => {
@@ -18,6 +17,8 @@ const Alarms = () => {
 
         getAlarms();
     }, [])
+
+    
 
     return (
         <div className='table-responsive'>
@@ -34,10 +35,10 @@ const Alarms = () => {
                     {
                         alarms.map((item) => (
                             <tr key={item.alarmLogId}>
-                                <td><p>{item.alarmLogId}</p></td>
+                                <td>{item.alarmLogId}</td>
                                 <td>{item.userName}</td>
                                 <td>{item.room.roomName}</td>
-                                <td>{item.alarmDate}</td>
+                                <td>{moment(item.alarmDate).format('yyyy-MM-DD HH:mm:ss')}</td>
                             </tr>
                         ))
                     }

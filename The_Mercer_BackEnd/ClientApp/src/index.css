@@ -228,3 +228,7 @@ a:hover {
     color: rgb(244, 228, 174);
 }
 
+.table-responsive {
+    margin: auto;
+}
+

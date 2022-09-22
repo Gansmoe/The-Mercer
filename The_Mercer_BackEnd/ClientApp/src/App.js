@@ -15,6 +15,7 @@ import { SET_ACTIVE_USER } from './redux/slice/authSlice';
 import { useDispatch } from "react-redux";
 import Alarms from './components/Pages/Alarms';
 
+
 const App = () => {
 
   const dispatch = useDispatch();
