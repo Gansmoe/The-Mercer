@@ -17,13 +17,18 @@ export class Error extends React.Component {
         return { hasError: true, error: error.toString() };
     }
 
+    refresh() {
+        window.location.reload();
+    }
+
     render() {
         if (this.state.hasError) {
             return (
                 <div className='error-bg'>
-                    <h4>Uh-oh. Something broke:</h4>
+                    <h4 className='error-title'>Uh-oh. Something broke:</h4>
                     <p>{this.state.error}</p>
                     <p>Please contact system administrator.</p>
+                    <button className='error-refresh-btn' onClick={this.refresh}>Refresh</button>
                 </div>
             )
         }

@@ -20,8 +20,6 @@ export const getTempData = (callbacks) => {
 
     setTimeout(() => {
 
-/*     const TempData = (callbacks) => { */
-
         const devices = [
             { humidDevice: '', tempDevice: '2ecf8aef-bd10-4a53-af03-558ef550f8f7' },
             { humidDevice: '896c6582-9e0d-44ee-97c5-a69fb7e68ca2', tempDevice: 'a115f84c-7e7e-4a7e-a982-0d984788f8c7'},
@@ -31,13 +29,15 @@ export const getTempData = (callbacks) => {
 
         const pickDevice = Math.floor(Math.random() * 4);;
         console.log(pickDevice);
-        let newValue = Math.random(1000);
+        let newValue = Math.floor(Math.random() * 100);
         const result = { id: devices[pickDevice], value: newValue };
-/*         console.log(result); */
         callbacks.telemetryMsg(result);
-/*     } */
     
     }, 5000);
 
+}
 
+
+export const copyTelemetryData = (callbacks, telemetryData) => {
+    callbacks.tempData(telemetryData);
 }
