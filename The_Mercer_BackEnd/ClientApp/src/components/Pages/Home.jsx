@@ -6,6 +6,8 @@ import Rooms from '../home components/rooms';
 import { MatchValues } from '../../Helpers/Calculation';
 import { copyTelemetryData, getTempData } from '../../Helpers/mockupobject';
 import { previousDay } from 'date-fns';
+import { getUnitsForDevices } from '../../Adapters/SmartHut';
+import { GetDevices } from '../../Adapters/SmartHut';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -14,7 +16,9 @@ export default class Home extends React.Component {
       buildings: [],
       rooms: [],
       telemetryData: [],
-      alarmData: []
+      alarmData: [],
+      units: [],
+      range: []
     };
   }
 
@@ -30,21 +34,40 @@ export default class Home extends React.Component {
     }
   }
 
+  getUnitFromSmartHut = async () => {
+    const [data, error] = await getUnitsForDevices();
+    if (error) {
+      console.log(error);
+    } else {
+      this.setState({ units: data})
+    }
+  }
+
+  getDevicesFromSmartHut = async () => {
+    const [data, error] = await GetDevices();
+    if (error) {
+      console.log(error);
+    } else {
+      this.setState({ range: data.devices})
+    }
+  }
+
   componentDidMount() {
     OpenSignalRConnection(this.callBacksObject);
     this.getRooms();
+    this.getUnitFromSmartHut();
+    this.getDevicesFromSmartHut();
   }
 
   componentDidUpdate() {
-
-    setTimeout(() => {
-      this.setState({ rooms: MatchValues(this.state.telemetryData, this.state.rooms)});
-    }, 100);
+    // setTimeout(() => {
+    //   this.setState({ rooms: MatchValues(this.state.telemetryData, this.state.rooms, this.state.range)});
+    // }, 100);
   }
 
   callBacksObject = {
     telemetryMsg: (data) => {
-      this.setState({ telemetryData: data });
+      this.setState({ rooms: MatchValues(data, this.state.rooms, this.state.range)});
     },
     alarmMsg: (data) => {
       this.setState({ alarmData: data });
@@ -56,7 +79,7 @@ export default class Home extends React.Component {
 
   render() {
     console.log("Rooms: ", this.state.rooms);
-    console.log("TelemetryData: ", this.state.telemetryData);
+    // console.log("TelemetryData: ", this.state.telemetryData);
 
     return (
       <div className='home-page' >

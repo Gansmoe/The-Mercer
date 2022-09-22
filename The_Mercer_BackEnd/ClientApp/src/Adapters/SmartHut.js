@@ -71,7 +71,7 @@ export const RestoreAlarm = async (id) => {
 }
 
 
-export const getUnits = async () => {
+export const getUnitsForDevices = async () => {
     try {
         const { data } = await axios.get(`${BaseUrlSmartHut}Unit`, {
             method: 'GET',
