@@ -31,6 +31,13 @@ namespace The_Mercer_BackEnd.Repository
             return results;
         }
 
+        public IEnumerable<AlarmLog> GetAlarmsPerRoom(int roomId)
+        {
+            var results = _appDbContext.Alarms.Include(r => r.Room).Where(x => x.RoomId == roomId);
+
+            return results;
+        }
+
         public async Task<Room[]> GetAllRoomsAsync()
         {
             IQueryable<Room> query = _appDbContext.Rooms;

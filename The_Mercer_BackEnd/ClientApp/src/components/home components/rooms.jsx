@@ -1,6 +1,7 @@
 import React from "react";
 import { RestoreAlarm } from "../../Adapters/SmartHut";
 import { postAlarmToDatabase } from "../../Adapters/Database";
+import { Link } from "react-router-dom";
 
 export default class Rooms extends React.Component {
     constructor(props) {
@@ -24,7 +25,16 @@ export default class Rooms extends React.Component {
     async handleClick(e) {
         //e.preventDefault();
         //ToDo, avgör om det är temp eller humid fel som ska nollställas.
-        await RestoreAlarm(this.props.room.tempDevice);
+        if (this.props.room.tempAlarm) {
+            this.props.customProp.restoreTempAlarm(false);
+            await RestoreAlarm(this.props.room.tempDevice);
+        } else if (this.props.room.humidAlarm){
+            this.props.customProp.restoreHumidAlarm(false);
+            await RestoreAlarm(this.props.room.humidDevice);
+        } else {
+            alert("No alarms restored")
+        }
+        
         console.log(this.props.room);
 
         let userName = localStorage.getItem("Name");
@@ -48,8 +58,15 @@ export default class Rooms extends React.Component {
                 <h2>Alarm humid: {this.props.room.humidAlarm ? <p>ALARM HUMID TRIGGAT</p> : <p>INGET ALARM</p>}</h2>
                 <button onClick={this.handleClick.bind(this)} className="alarmBtn">Återställ</button>
                 <i className="arrow down" onClick={this.eventHandler}></i>
-                {this.state.showmore === true ? <div className="room-info"> <p>Temperatur: {this.props.room.tempValue}</p>
-                    {this.props.room.humidValue != null ? <p>Luftfuktighet: {this.props.room.humidValue}</p> : <></>} <p>Uppdaterad: {this.props.room.time}</p></div> : <></>}
+                {this.state.showmore === true ?
+                    <div className="room-info">
+                        <p>Temperatur: {this.props.room.tempValue}</p>
+                        {this.props.room.humidValue != null ?
+                            <p>Luftfuktighet: {this.props.room.humidValue}</p> : <></>}
+                        <p>Uppdaterad: {this.props.room.time}</p>
+                        <p><b><Link to={`/alarmdetails/${this.props.room.roomId}`}>Alarm Details</Link></b></p>
+                    </div> : <></>}
+
 
             </div>
         );

@@ -64,8 +64,11 @@ export default class Home extends React.Component {
     alarmMsg: (data) => {
       this.setState({ alarmData: data });
     },
-    tempData: (data) => {
-      this.setState({ tempData: data });
+    restoreTempAlarm: (data, id) => {
+      this.setState({ tempAlarm: data }, console.log(data));
+    },
+    restoreHumidAlarm: (data, id) => {
+      this.setState({ humidAlarm: data });
     }
   }
 
@@ -76,7 +79,7 @@ export default class Home extends React.Component {
     return (
       <div className='home-page' >
         <div className="rooms-container">
-          {(this.state.rooms == null) ? <></> : <SearchBar list={this.state.rooms} filterprop={'roomName'} customkey={'roomId'} Comp={Rooms} placeholder={'Filter rooms...'} />}
+          {(this.state.rooms == null) ? <></> : <SearchBar list={this.state.rooms} filterprop={'roomName'} customkey={'roomId'} Comp={Rooms} placeholder={'Filter rooms...'} customProp={this.callBacksObject} />}
         </div>
       </div>
     )

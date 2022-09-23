@@ -36,3 +36,12 @@ export const getAlarmHistory = async () => {
         return [null, error]
     }
 }
+
+export const getAlarmHistoryPerRoom = async (id) => {
+    try {
+        const { data } = await axios.get(`${BaseUrl}alarm/${id}`)
+        return [data, null]
+    } catch (error) {
+        return [null, error]
+    }
+}
