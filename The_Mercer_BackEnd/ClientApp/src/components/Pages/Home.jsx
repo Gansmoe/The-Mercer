@@ -3,7 +3,7 @@ import { getRoomsFromDatabase } from '../../Adapters/Database';
 import SearchBar from '../SearchBar';
 import { OpenSignalRConnection } from '../../Adapters/Signalr';
 import Rooms from '../home components/rooms';
-import { MatchValues } from '../../Helpers/Calculation';
+import { MatchValues, ChangeHumidBool, ChangeTempBool } from '../../Helpers/Calculation';
 import { getUnitsForDevices } from '../../Adapters/SmartHut';
 import { GetDevices } from '../../Adapters/SmartHut';
 
@@ -64,11 +64,11 @@ export default class Home extends React.Component {
     alarmMsg: (data) => {
       this.setState({ alarmData: data });
     },
-    restoreTempAlarm: (data, id) => {
-      this.setState({ tempAlarm: data }, console.log(data));
+    restoreTempAlarm: (id) => {
+      this.setState({ rooms: ChangeTempBool(this.state.rooms, id) });
     },
-    restoreHumidAlarm: (data, id) => {
-      this.setState({ humidAlarm: data });
+    restoreHumidAlarm: (id) => {
+      this.setState({ rooms: ChangeHumidBool(this.state.rooms, id) });
     }
   }
 

@@ -23,29 +23,35 @@ export default class Rooms extends React.Component {
     }
 
     async handleClick(e) {
-        //e.preventDefault();
-        //ToDo, avgör om det är temp eller humid fel som ska nollställas.
+
+        var body;
+
+        let userName = localStorage.getItem("Name");
+        let userMail = localStorage.getItem("Mail");
+
         if (this.props.room.tempAlarm) {
-            this.props.customProp.restoreTempAlarm(false);
+            this.props.customProp.restoreTempAlarm(this.props.room.roomId);
+            body = JSON.stringify({
+                "UserName": userName,
+                "UserMail": userMail,
+                "DeviceId": this.props.room.tempDevice,
+                "RoomId": this.props.room.roomId
+            });
             await RestoreAlarm(this.props.room.tempDevice);
-        } else if (this.props.room.humidAlarm){
-            this.props.customProp.restoreHumidAlarm(false);
+        } else if (this.props.room.humidAlarm) {
+            this.props.customProp.restoreHumidAlarm(this.props.room.roomId);
+            body = JSON.stringify({
+                "UserName": userName,
+                "UserMail": userMail,
+                "DeviceId": this.props.room.humidDevice,
+                "RoomId": this.props.room.roomId
+            });
             await RestoreAlarm(this.props.room.humidDevice);
         } else {
             alert("No alarms restored")
         }
-        
+
         console.log(this.props.room);
-
-        let userName = localStorage.getItem("Name");
-        let userMail = localStorage.getItem("Mail");
-        var body = JSON.stringify({
-            "UserName": userName,
-            "UserMail": userMail,
-            "DeviceId": this.props.room.tempDevice,
-            "RoomId": this.props.room.roomId
-        });
-
         await postAlarmToDatabase(body);
     }
 
