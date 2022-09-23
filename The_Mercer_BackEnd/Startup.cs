@@ -37,7 +37,7 @@ namespace The_Mercer_BackEnd
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options =>
-                options.UseSqlite(DbPath[1]));
+                options.UseSqlite(DbPath[0]));
 
             services.AddScoped<IRoomRepository, RoomRepository>();
             

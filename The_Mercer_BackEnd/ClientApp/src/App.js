@@ -14,6 +14,7 @@ import Header from './components/header/Header';
 import { SET_ACTIVE_USER } from './redux/slice/authSlice';
 import { useDispatch } from "react-redux";
 import Alarms from './components/Pages/Alarms';
+import { AlarmDetails } from './components/Pages/AlarmDetails';
 import NoticeStack from './components/NoticeStack';
 
 
@@ -55,13 +56,14 @@ const App = () => {
   return (
     <div className='App'>
       <Error>
-      <Router>
-        <Header />
-        <NoticeStack list={noticeList}/>
+        <Router>
+          <Header />
+          <NoticeStack list={noticeList} />
           <Routes>
-          <Route path="/" element={<Home />}></Route>
+            <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/alarms" element={<Alarms />}></Route>
+            <Route path="/alarmdetails/:id" element={<AlarmDetails />}></Route>
           </Routes>
         </Router>
         <div className='footer no-select'>

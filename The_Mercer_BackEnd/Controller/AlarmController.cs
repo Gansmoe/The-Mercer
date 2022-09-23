@@ -38,6 +38,7 @@ namespace The_Mercer_BackEnd.Controller
                 return this.StatusCode(StatusCodes.Status500InternalServerError, "Server failure");
             }
         }
+
         [HttpGet("getAlarms")]
         public IEnumerable<AlarmLog> GetHistory()
         {
@@ -51,7 +52,22 @@ namespace The_Mercer_BackEnd.Controller
             catch (Exception)
             {
 
-                throw;
+                throw new Exception("Server failure");
+            }
+        }
+
+        [HttpGet("{roomId}")]
+        public IEnumerable<AlarmLog> GetAlarmsPerRoom(int roomId)
+        {
+            try
+            {
+                var results = _roomRepository.GetAlarmsPerRoom(roomId);
+                return results;
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Server failure");
             }
         }
     }

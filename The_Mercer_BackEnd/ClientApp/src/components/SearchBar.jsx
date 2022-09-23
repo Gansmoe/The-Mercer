@@ -12,7 +12,7 @@ import { useState, useEffect } from 'react';
  * @returns JSX.Element
  */
 
-const SearchBar = ({ list, placeholder, Comp, filterprop, customkey }) => {
+const SearchBar = ({ list, placeholder, Comp, filterprop, customkey, customProp }) => {
     const [items, setItems] = useState(list);
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -39,7 +39,7 @@ const SearchBar = ({ list, placeholder, Comp, filterprop, customkey }) => {
                     .map((entry, key) => {
                         return (
                             <div key={entry[customkey] ? entry[customkey] : key}>
-                                <Comp room={entry} listitem={entry} />  {/* "room" is hard coded due to rooms.jsx component requiring it to be called that. Use listitem instead please. */}
+                                <Comp room={entry} listitem={entry} customProp={customProp} />  {/* "room" is hard coded due to rooms.jsx component requiring it to be called that. Use listitem instead please. */}
                             </div>
                         );
                     })}
