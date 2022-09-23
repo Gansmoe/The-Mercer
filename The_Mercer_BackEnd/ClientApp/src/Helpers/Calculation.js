@@ -70,3 +70,39 @@ export const countArray = (array) => {
 
     return counter;
 }
+
+
+export const ChangeTempBool = (rooms, id) => {
+
+    console.log("från in i ChangeTempBool");
+    
+    for (let i = 0; i < rooms.length; i++) {
+
+        console.log("från in i for loopen");
+
+        if (rooms[i].roomId === id) {
+
+            console.log("från in i if satsen");
+
+            rooms[i].tempAlarm = false;
+        }
+    }
+    return rooms;
+}
+
+export const ChangeHumidBool = (rooms, id) => {
+
+    console.log("från ChangeHumidBool");
+    
+    for (let i = 0; i < rooms.length; i++) {
+
+        console.log("från for loopen");
+
+        if (rooms[i].roomId === id) {
+
+            console.log("från if satsen");
+            rooms[i].humidAlarm = false;
+        }
+    }
+    return rooms;
+}
