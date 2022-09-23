@@ -42,7 +42,7 @@ export default class Rooms extends React.Component {
 
     render() {
         return (
-            <div className="rooms">
+            <div className="rooms" id={this.props.room.roomId}>
                 <h5>{this.props.room.roomName}</h5>
                 <h2>Alarm temp: {this.props.room.tempAlarm ? <p>ALARM TEMP TRIGGAT</p> : <p>INGET ALARM</p>}</h2>
                 <h2>Alarm humid: {this.props.room.humidAlarm ? <p>ALARM HUMID TRIGGAT</p> : <p>INGET ALARM</p>}</h2>
