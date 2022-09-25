@@ -20,13 +20,13 @@ const NoticeStack = ({ list }) => {
         setNotices(notices.push(newNotice));
     }
     //..........................................
-    
+
     return (
         <div className="notice-list">
             {notices.length > 0 ?
                 notices.map((notice, key) => {
                     return (
-                        <Notice msg={notice.msg} type={notice.type} callback={notice.callback} key={key} />
+                        <Notice msg={notice.msg} type={notice.type} callback={notice.callback} id={notice.id} key={key} />
                     )
                 })
                 : <></>
