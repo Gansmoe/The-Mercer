@@ -19,7 +19,7 @@ const Notice = ({ msg, type, callback, scrolltarget }) => {
 
     return (
         <div className={className}>
-                <div className='notice-button' onClick={handleClick}>
+                <div className='notice-button no-select' onClick={handleClick}>
                     {msg}
                 </div>
         </div>
