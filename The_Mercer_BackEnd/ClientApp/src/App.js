@@ -47,7 +47,7 @@ const App = () => {
 
     if (handshakeRes[0].accessToken) {
       console.log('RRRR auth ', (handshakeRes[0].accessToken))
-      dispatch(SET_ACTIVE_USER())
+      dispatch(SET_ACTIVE_USER(requestData[0]))
     }
   }
 
