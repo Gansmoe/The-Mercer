@@ -52,18 +52,16 @@ body {
 .notice-list {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: baseline;
+    align-items: center;
     width: 100%;
 }
 
 .notice {
     display: flex;
-    width: 100%;
+    width: 90%;
     border-radius: 0.5em;
-    justify-content: center;
-    align-content: baseline;
-    margin: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
     padding: 0.5em;
 }
 
