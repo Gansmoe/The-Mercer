@@ -1,19 +1,16 @@
 import React from 'react'
-import moment from 'moment';
 
-const AlarmDetailsRoom = ( {listitem} ) => {
-    console.log(listitem);
+const AlarmDetailsRoom = ( {data} ) => {
+    console.log(data);
     return (
         <>
-            {listitem ? <div className='alarmdetail-container'>
+            {data.length > 1 ? <div className='alarmdetail-container'>
                 <div>
-                    <p>ID: {listitem.alarmLogId}</p>
-                    <p>Username: {listitem.userName}</p>
-                    <p>Date: {moment(listitem.alarmDate).format('yyyy-MM-DD HH:mm:ss')}</p>
-                    <p>Username: {listitem.userMail}</p>
-                    <p>DeviceId: {listitem.deviceId}</p>
+                    <h2><b>Room Details</b></h2>
+                    <p>Room Name: {data[0].room.roomName}</p>
+                    <p>Room Name: {data[0].room.roomName}</p>
                 </div>
-            </div> : <></>}
+            </div> : <>TEST</>}
 
         </>
     )

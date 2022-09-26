@@ -287,20 +287,3 @@ a:hover {
     margin: auto;
 }
 
-.alarmdetail-container {
-    background-color: #c6c6ab;
-    border: 2px solid black;
-    padding: 10px;
-    border-radius: 10px;
-    width: 311px;
-    position: relative;
-    height: fit-content;
-    margin: 30px;
-}
-
-.room-details {
-    justify-content: center;
-    width: auto;
-    display: grid;
-    margin: 30px;
-}

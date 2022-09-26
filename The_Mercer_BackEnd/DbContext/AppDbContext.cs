@@ -19,7 +19,7 @@ namespace The_Mercer_BackEnd.DbContext
         public DbSet<AlarmLog> Alarms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite(DbPath[0]);
+            => options.UseSqlite(DbPath[1]);
         //Henke = DbPath[0]
         //Isac = DbPath[1]
         //Christian = DbPath[2]
