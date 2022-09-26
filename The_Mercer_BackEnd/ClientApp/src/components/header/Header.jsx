@@ -21,7 +21,7 @@ function Header() {
 
   const loggedinfo = isLoggedin ? (
    <>
-      <div className="px-3">
+      <div className="px-3 " style={{color:"#f4e4ae"}}>
         <p >{name}</p>
       </div>{" "}
       <div>
