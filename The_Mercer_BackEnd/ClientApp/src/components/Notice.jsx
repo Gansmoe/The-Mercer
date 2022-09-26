@@ -1,6 +1,7 @@
 import React from 'react'
 import { removeNotice } from '../redux/slice/noticeStackSlice';
 import { useDispatch } from "react-redux";
+import NoticeStackCallbacks from '../Helpers/NoticeStackCallbacks';
 
 const Notice = ({ msg, type, callback, id }) => {
     // Class Name is for cosmetic styling purposes. Default options are "info" and "danger".
@@ -12,7 +13,11 @@ const Notice = ({ msg, type, callback, id }) => {
 
         // Execute callback if provided
         if (callback) {
-            callback();
+            const runCallback = NoticeStackCallbacks[callback[0]];
+            const args = callback[1]
+            console.log(callback);
+            console.log(args);
+            runCallback(args);
         }
 
         // Destroy Notice

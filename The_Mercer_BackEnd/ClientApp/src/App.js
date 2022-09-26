@@ -18,7 +18,6 @@ import Alarms from './components/Pages/Alarms';
 import { AlarmDetails } from './components/Pages/AlarmDetails';
 import NoticeStack from './components/NoticeStack';
 
-
 const App = () => {
 
   const dispatch = useDispatch();
@@ -54,17 +53,15 @@ const App = () => {
   AuthenticateUser();
 
   const addNewNotice = (msg, type, callback) => {
-    const notice = {msg: msg, type: type, callback: callback}
+    const notice = { msg: msg, type: type, callback: callback }
     dispatch(addNotice(notice));
   }
 
   addNewNotice(
     '👁‍🗨 Notification Update: Now using Redux to store notification list.',
     'info',
-    function (id) {
-      const target = document.getElementById('3'); // id should be passed here in normal cases
-      window.scrollTo(0, target.offsetTop);
-    });
+    ['scrollToElementId', [3]]
+  );
 
   return (
     <div className='App'>
