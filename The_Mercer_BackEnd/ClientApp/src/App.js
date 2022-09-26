@@ -12,6 +12,7 @@ import { AuthenticateRequest } from './Adapters/Authenticate';
 import { HandshakeRequest } from './Adapters/Authenticate';
 import Header from './components/header/Header';
 import { SET_ACTIVE_USER } from './redux/slice/authSlice';
+import { addNotice } from './redux/slice/noticeStackSlice';
 import { useDispatch } from "react-redux";
 import Alarms from './components/Pages/Alarms';
 import { AlarmDetails } from './components/Pages/AlarmDetails';
@@ -22,7 +23,6 @@ const App = () => {
 
   const dispatch = useDispatch();
   const [token, setToken] = useState("");
-  const [noticeList, setNoticeList] = useState([]);
 
   useEffect(() => {
     const getToken = localStorage.getItem("AuthenticateToken");
@@ -47,18 +47,31 @@ const App = () => {
 
     if (handshakeRes[0].accessToken) {
       console.log('RRRR auth ', (handshakeRes[0].accessToken))
-      dispatch(SET_ACTIVE_USER())
+      dispatch(SET_ACTIVE_USER(requestData[0]))
     }
   }
 
   AuthenticateUser();
+
+  const addNewNotice = (msg, type, callback) => {
+    const notice = {msg: msg, type: type, callback: callback}
+    dispatch(addNotice(notice));
+  }
+
+  addNewNotice(
+    '👁‍🗨 Notification Update: Now using Redux to store notification list.',
+    'info',
+    function (id) {
+      const target = document.getElementById('3'); // id should be passed here in normal cases
+      window.scrollTo(0, target.offsetTop);
+    });
 
   return (
     <div className='App'>
       <Error>
         <Router>
           <Header />
-          <NoticeStack list={noticeList} />
+          <NoticeStack />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
