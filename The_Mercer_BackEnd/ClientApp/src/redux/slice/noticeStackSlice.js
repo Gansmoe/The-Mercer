@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const obnoxiousLog = (state) => {
+const debugLog = (state) => {
     // Temporary obnoxious logging message. Sorry, having a hard time finding the message...
     console.log('%c NOTICE UPDATE (╯°□°）╯︵ ┻━┻', 'color: #bbdd00; font-size: 64px', state.list,);
 }
@@ -22,15 +22,14 @@ export const noticeStackSlice = createSlice({
             newList.push({msg, type, callback, id});
             state.list = newList;
            
-            obnoxiousLog(state);
+            //debugLog(state);
         },
 
         removeNotice: (state, action) => {
             const id = action.payload;
-            console.log('Got id:', id);
             state.list = state.list.filter(notice => notice.id !== id);
            
-            obnoxiousLog(state);
+            //debugLog(state);
         }
     }
 })

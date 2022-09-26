@@ -57,11 +57,11 @@ const App = () => {
     dispatch(addNotice(notice));
   }
 
-  addNewNotice(
+/*   addNewNotice(
     '👁‍🗨 Notification Update: Now using Redux to store notification list.',
     'info',
     ['scrollToElementId', [3]]
-  );
+  ); */
 
   return (
     <div className='App'>
