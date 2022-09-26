@@ -73,8 +73,8 @@ export default class Home extends React.Component {
   }
 
   render() {
-    console.log("Rooms: ", this.state.rooms);
-    // console.log("TelemetryData: ", this.state.telemetryData);
+    //console.log("Rooms: ", this.state.rooms);
+    //console.log("Alarm: ", this.state.alarmData);
 
     return (
       <div className='home-page' >
