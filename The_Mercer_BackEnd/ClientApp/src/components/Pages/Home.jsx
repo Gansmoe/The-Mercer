@@ -27,7 +27,7 @@ export default class Home extends React.Component {
     if (error) {
       console.log(error);
     } else {
-      this.setState({ rooms: data }/* , () => { console.log(data); } */);
+      this.setState({ rooms: data });
 
     }
   }
@@ -37,7 +37,7 @@ export default class Home extends React.Component {
     if (error) {
       console.log(error);
     } else {
-      this.setState({ units: data})
+      this.setState({ units: data })
     }
   }
 
@@ -46,7 +46,7 @@ export default class Home extends React.Component {
     if (error) {
       console.log(error);
     } else {
-      this.setState({ range: data.devices})
+      this.setState({ range: data.devices })
     }
   }
 
@@ -59,7 +59,7 @@ export default class Home extends React.Component {
 
   callBacksObject = {
     telemetryMsg: (data) => {
-      this.setState({ rooms: MatchValues(data, this.state.rooms, this.state.range)});
+      this.setState({ rooms: MatchValues(data, this.state.rooms, this.state.range) });
     },
     alarmMsg: (data) => {
       this.setState({ alarmData: data });

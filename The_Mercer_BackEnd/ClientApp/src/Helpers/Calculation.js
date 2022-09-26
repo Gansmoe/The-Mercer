@@ -15,12 +15,12 @@ export const MatchValues = (telemetry, rooms, range) => {
 
                     if (range[y].id === rooms[i].tempDevice.toLowerCase()) {
 
-                        if (rooms[i].tempValue > range[y].maxValue) {
+                        if (rooms[i].tempValue >= range[y].maxValue) {
                             console.log("från in i if alarm satsen");
 
                             rooms[i].tempAlarm = true;
 
-                        } else if (rooms[i].tempValue < range[y].minValue) {
+                        } else if (rooms[i].tempValue <= range[y].minValue) {
 
                             rooms[i].tempAlarm = true;
 
@@ -38,11 +38,11 @@ export const MatchValues = (telemetry, rooms, range) => {
 
                     if (range[y].id === rooms[i].humidDevice.toLowerCase()) {
 
-                        if (rooms[i].humidValue > range[y].maxValue) {
+                        if (rooms[i].humidValue >= range[y].maxValue) {
 
                             rooms[i].humidAlarm = true;
 
-                        } else if (rooms[i].humidValue < range[y].minValue) {
+                        } else if (rooms[i].humidValue <= range[y].minValue) {
 
                             rooms[i].humidAlarm = true;
 

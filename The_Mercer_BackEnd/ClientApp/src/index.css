@@ -200,10 +200,21 @@ a:hover {
     margin: 30px;
 }
 
-.rooms {
+.no-alarm {
     background-color: #c6c6ab;
     position: relative;
     border: #333 solid 2px;
+    width: 311px;
+    height: fit-content;
+    margin: 30px;
+    padding: 10px;
+}
+
+.alarm {
+    background-color: #c6c6ab;
+    position: relative;
+    border: rgb(182, 18, 18) solid 2px;
+    box-shadow: inset 0 0 20px rgb(255, 0, 0);
     width: 311px;
     height: fit-content;
     margin: 30px;
@@ -254,6 +265,11 @@ a:hover {
     border-radius: 2px;
 }
 
+.alarmBtn:hover {
+    background-color: rgb(83, 0, 25);
+    color: rgb(244, 228, 174);
+}
+
 .no-select {
     -webkit-touch-callout: none;
     /* iOS Safari */
@@ -302,4 +318,22 @@ a:hover {
     width: auto;
     display: grid;
     margin: 30px;
+}
+
+.alarmOk {
+    color: rgb(10, 10, 10);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    background-color: rgb(1, 212, 1);
+    border: 2px solid rgb(73, 73, 73);
+}
+
+.alarmTriggered {
+    color: rgb(10, 10, 10);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    background-color: rgb(212, 1, 1);
+    border: 2px solid rgb(73, 73, 73);
 }
