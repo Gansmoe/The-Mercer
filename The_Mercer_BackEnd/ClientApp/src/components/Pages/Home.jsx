@@ -26,17 +26,6 @@ export default class Home extends React.Component {
     const [data, error] = await getRoomsFromDatabase();
     if (error) {
       console.log(error);
-      // clears the token if it is invalid
-      localStorage.clear();
-      // clears all cookies
-      const cookies = document.cookie;
-
-      for (const myCookie of cookies.split(';')) {
-        const pos = myCookie.indexOf('=');
-        const name = pos > -1 ? myCookie.substr(0, pos) : myCookie;
-        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-      }
-      window.location.reload();
     } else {
       this.setState({ rooms: data });
 
