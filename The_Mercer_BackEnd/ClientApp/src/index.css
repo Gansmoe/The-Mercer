@@ -68,6 +68,7 @@ body {
 .notice:hover {
     cursor: pointer;
     background-color: cornflowerblue;
+    scale: 1.1;
     transition: 0.5s
 }
 
