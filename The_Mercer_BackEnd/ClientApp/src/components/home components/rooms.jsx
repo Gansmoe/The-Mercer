@@ -22,6 +22,16 @@ export default class Rooms extends React.Component {
         event.target.classList.toggle("up");
     }
 
+    getAlarmClassName() {
+        if (this.props.room.tempAlarm === true) {
+            return "alarm";
+        } else if (this.props.room.humidAlarm === true) {
+            return "alarm";
+        } else {
+            return "no-alarm";
+        }
+    }
+
     async handleClick(e) {
 
         var body;
@@ -58,10 +68,9 @@ export default class Rooms extends React.Component {
 
     render() {
         return (
-            <div className="rooms" id={this.props.room.roomId}>
+            <div className={this.getAlarmClassName()} id={this.props.room.roomId} >
                 <h5>{this.props.room.roomName}</h5>
-                <h2>Alarm temp: {this.props.room.tempAlarm ? <p>ALARM TEMP TRIGGAT</p> : <p>INGET ALARM</p>}</h2>
-                <h2>Alarm humid: {this.props.room.humidAlarm ? <p>ALARM HUMID TRIGGAT</p> : <p>INGET ALARM</p>}</h2>
+                <h6>{this.props.room.tempAlarm || this.props.room.humidAlarm ? <>ALARM {this.props.room.tempAlarm ? <p>Temperatur</p> : <></>}{this.props.room.humidAlarm ? <p>Luftfuktighet</p> : <></>} </> : <p className="alarmOk">OK</p>}</h6>
                 <button onClick={this.handleClick.bind(this)} className="alarmBtn">Återställ</button>
                 <i className="arrow down" onClick={this.eventHandler}></i>
                 {this.state.showmore === true ?
