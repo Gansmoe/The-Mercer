@@ -13,23 +13,24 @@ export const noticeStackSlice = createSlice({
     },
     reducers: {
         addNotice: (state, action) => {
-            const {msg, type, callback} = action.payload;
+            const { msg, type, callback } = action.payload;
 
-            state.newNoticeId += 1;
-            const id = `notice-${state.newNoticeId.toString()}`;
+            // Check if a notification with this message already exist before adding a new one
+            const notice = state.list.find(notice => notice.msg === action.payload.msg);
 
-            const newList = [...state.list]
-            newList.push({msg, type, callback, id});
-            state.list = newList;
-           
-            //debugLog(state);
+            if (!notice) {
+                state.newNoticeId += 1;
+                const id = `notice-${state.newNoticeId.toString()}`;
+
+                const newList = [...state.list]
+                newList.push({ msg, type, callback, id });
+                state.list = newList;
+            }
         },
 
         removeNotice: (state, action) => {
             const id = action.payload;
             state.list = state.list.filter(notice => notice.id !== id);
-           
-            //debugLog(state);
         }
     }
 })

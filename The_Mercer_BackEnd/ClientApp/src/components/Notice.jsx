@@ -15,8 +15,6 @@ const Notice = ({ msg, type, callback, id }) => {
         if (callback) {
             const runCallback = NoticeStackCallbacks[callback[0]];
             const args = callback[1]
-            console.log(callback);
-            console.log(args);
             runCallback(args);
         }
 
