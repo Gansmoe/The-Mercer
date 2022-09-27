@@ -3,6 +3,7 @@ import { RestoreAlarm } from "../../Adapters/SmartHut";
 import { postAlarmToDatabase } from "../../Adapters/Database";
 import { Link } from "react-router-dom";
 import AddNotice from "../AddNotice";
+import { MatchUnit } from "../../Helpers/Calculation";
 
 
 export default class Rooms extends React.Component {
@@ -63,7 +64,6 @@ export default class Rooms extends React.Component {
             alert("No alarms restored")
         }
 
-        console.log(this.props.room);
         await postAlarmToDatabase(body);
     }
 
@@ -80,9 +80,9 @@ export default class Rooms extends React.Component {
                 <i className="arrow down" onClick={this.eventHandler}></i>
                 {this.state.showmore === true ?
                     <div className="room-info">
-                        <p>Temperatur: {this.props.room.tempValue}</p>
+                        <p>Temperatur: {this.props.room.tempValue} {this.props.room.tempUnit}</p>
                         {this.props.room.humidValue != null ?
-                            <p>Luftfuktighet: {this.props.room.humidValue}</p> : <></>}
+                            <p>Luftfuktighet: {this.props.room.humidValue} {this.props.room.humidUnit}</p> : <></>}
                         <p>Uppdaterad: {this.props.room.time}</p>
                         <p><b><Link to={`/alarmdetails/${this.props.room.roomId}`}>Alarm Details</Link></b></p>
                     </div> : <></>}

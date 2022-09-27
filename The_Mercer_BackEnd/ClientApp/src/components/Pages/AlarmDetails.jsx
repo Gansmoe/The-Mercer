@@ -24,10 +24,6 @@ export const AlarmDetails = () => {
     getAlarmsPerRoomFromDb();
 
   }, [])
-
-  console.log("AlarmHistory", alarmHistory);
-  console.log("Selected", selected);
-
   
   return (
     <>

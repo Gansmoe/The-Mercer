@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment';
 
 const AlarmDetailsRoom = ( {listitem} ) => {
-    console.log(listitem);
     return (
         <>
             {listitem ? <div className='alarmdetail-container'>

@@ -17,7 +17,7 @@ export const noticeStackSlice = createSlice({
 
             // Check if a notification with this message already exist before adding a new one
             const notice = state.list.find(notice => notice.msg === action.payload.msg);
-
+            
             if (!notice) {
                 state.newNoticeId += 1;
                 const id = `notice-${state.newNoticeId.toString()}`;
