@@ -97,8 +97,13 @@ body {
 .search-bar-input {
     display: flex;
     width: 75%;
-    height: 2em;
+    height: 3em;
     padding-left: 1em;
+}
+
+.search-bar-input:hover {
+    background-color: rgb(235, 235, 235);
+    transition: 0.2s;
 }
 
 .search-bar-container {
@@ -219,6 +224,7 @@ a:hover {
     height: fit-content;
     margin: 30px;
     padding: 10px;
+    transition: 0.5s;
 }
 
 .arrow {
@@ -259,15 +265,22 @@ a:hover {
     top: 5px;
     right: 5px;
     cursor: pointer;
-    padding-left: 3px;
-    padding-right: 3px;
-    border:#f4ebd4 solid 2px;
-    border-radius: 2px;
+/*     padding-left: 3px;
+    padding-right: 3px; */
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    /* border:#f4ebd4 solid 2px; */
+    border: none;
+    border-radius: 0.5em;
 }
 
 .alarmBtn:hover {
     background-color: rgb(83, 0, 25);
     color: rgb(244, 228, 174);
+    scale: 1.1;
+    transition: 0.2s;
 }
 
 .no-select {
@@ -337,3 +350,25 @@ a:hover {
     background-color: rgb(212, 1, 1);
     border: 2px solid rgb(73, 73, 73);
 }
+
+.anim-fade {
+    animation-duration: 0.5s;
+    animation-name: animate-fade;
+    animation-fill-mode: backwards;
+  }
+
+.anim-grow {
+    animation-duration: 0.5s;
+    animation-name: animate-grow;
+    animation-fill-mode: backwards;
+  }
+
+  @keyframes animate-fade {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes animate-grow {
+      0% {scale: 0;}
+      100% {scale: 1;}
+  }
