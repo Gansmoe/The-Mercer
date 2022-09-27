@@ -164,6 +164,16 @@ a:hover {
     margin: 1em;
 }
 
+.contact-support {
+    text-decoration: none;
+    color: white;
+}
+
+.contact-support:hover {
+    color: rgb(173, 162, 112);
+    transition: 0.5s;
+}
+
 .login-container {
     margin: 30px;
     width: auto;
