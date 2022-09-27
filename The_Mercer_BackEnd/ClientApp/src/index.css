@@ -204,7 +204,7 @@ a:hover {
 .no-alarm {
     background-color: #c6c6ab;
     position: relative;
-    border: #333 solid 2px;
+    border-radius: 5px;
     width: 311px;
     height: fit-content;
     margin: 30px;
