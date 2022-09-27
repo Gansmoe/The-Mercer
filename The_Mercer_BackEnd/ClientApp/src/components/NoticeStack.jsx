@@ -10,6 +10,10 @@ const NoticeStack = () => {
         setNotices(getNoticeList);
     }, [getNoticeList])
 
+    const title = 'The Mercer Hotel';
+    const counter = notices.length;
+    counter > 0 ? document.title = `(${counter}) ${title}` : document.title = title;
+
     return (
         <div className="notice-list">
             {notices.length > 0 ?
