@@ -16,7 +16,7 @@ import { addNotice } from './redux/slice/noticeStackSlice';
 import { useDispatch } from "react-redux";
 import Alarms from './components/Pages/Alarms';
 import { AlarmDetails } from './components/Pages/AlarmDetails';
-import NoticeStack from './components/NoticeStack';
+
 
 const App = () => {
 
@@ -52,23 +52,12 @@ const App = () => {
 
   AuthenticateUser();
 
-  const addNewNotice = (msg, type, callback) => {
-    const notice = { msg: msg, type: type, callback: callback }
-    dispatch(addNotice(notice));
-  }
-
-/*   addNewNotice(
-    '👁‍🗨 Notification Update: Now using Redux to store notification list.',
-    'info',
-    ['scrollToElementId', [3]]
-  ); */
 
   return (
     <div className='App'>
       <Error>
         <Router>
           <Header />
-          <NoticeStack />
           <Routes>
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>

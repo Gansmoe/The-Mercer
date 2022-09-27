@@ -6,6 +6,7 @@ import Rooms from '../home components/rooms';
 import { MatchValues, ChangeHumidBool, ChangeTempBool } from '../../Helpers/Calculation';
 import { getUnitsForDevices } from '../../Adapters/SmartHut';
 import { GetDevices } from '../../Adapters/SmartHut';
+import NoticeStack from '../NoticeStack';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -59,7 +60,7 @@ export default class Home extends React.Component {
 
   callBacksObject = {
     telemetryMsg: (data) => {
-      this.setState({ rooms: MatchValues(data, this.state.rooms, this.state.range) });
+      this.setState({ rooms: MatchValues(data, this.state.rooms, this.state.range, this.state.units) });
     },
     alarmMsg: (data) => {
       this.setState({ alarmData: data });
@@ -75,13 +76,18 @@ export default class Home extends React.Component {
   render() {
     //console.log("Rooms: ", this.state.rooms);
     //console.log("Alarm: ", this.state.alarmData);
+    //console.log("Alarm: ", this.state.alarmData);
 
     return (
+      <>
+      <NoticeStack />
       <div className='home-page' >
+        
         <div className="rooms-container">
           {(this.state.rooms == null) ? <></> : <SearchBar list={this.state.rooms} filterprop={'roomName'} customkey={'roomId'} Comp={Rooms} placeholder={'Filter rooms...'} customProp={this.callBacksObject} />}
         </div>
       </div>
+      </>
     )
   }
 }

@@ -1,7 +1,6 @@
 
 
-export const MatchValues = (telemetry, rooms, range) => {
-    
+export const MatchValues = (telemetry, rooms, range, units) => {
 
     if (telemetry.length >= 1) {
 
@@ -12,20 +11,25 @@ export const MatchValues = (telemetry, rooms, range) => {
                 rooms[i].time = new Date(telemetry[0].time * 1000).toLocaleTimeString();
                 
                 for (let y = 0; y < range.length; y++) {
+                    
+                    for (let x = 0; x < units.length; x++){
 
-                    if (range[y].id === rooms[i].tempDevice.toLowerCase()) {
+                        if (range[y].id === rooms[i].tempDevice.toLowerCase() && range[y].unitId === units[x].id) {
+                            rooms[i].tempUnit = units[x].unit;
 
-                        if (rooms[i].tempValue >= range[y].maxValue) {
-                            console.log("från in i if alarm satsen");
-
-                            rooms[i].tempAlarm = true;
-
-                        } else if (rooms[i].tempValue <= range[y].minValue) {
-
-                            rooms[i].tempAlarm = true;
-
+                            if (rooms[i].tempValue > range[y].maxValue) {
+    
+                                rooms[i].tempAlarm = true;
+    
+                            } else if (rooms[i].tempValue < range[y].minValue) {
+    
+                                rooms[i].tempAlarm = true;
+    
+                            }
                         }
                     }
+
+                    
                 }
                 return rooms;
             }
@@ -36,18 +40,23 @@ export const MatchValues = (telemetry, rooms, range) => {
 
                 for (let y = 0; y < range.length; y++) {
 
-                    if (range[y].id === rooms[i].humidDevice.toLowerCase()) {
+                    for (let x = 0; x < units.length; x++) {
 
-                        if (rooms[i].humidValue >= range[y].maxValue) {
-
-                            rooms[i].humidAlarm = true;
-
-                        } else if (rooms[i].humidValue <= range[y].minValue) {
-
-                            rooms[i].humidAlarm = true;
-
+                        if (range[y].id === rooms[i].humidDevice.toLowerCase() && range[y].unitId === units[x].id) {
+                            rooms[i].humidUnit = units[x].unit;
+                            if (rooms[i].humidValue > range[y].maxValue) {
+    
+                                rooms[i].humidAlarm = true;
+    
+                            } else if (rooms[i].humidValue < range[y].minValue) {
+    
+                                rooms[i].humidAlarm = true;
+    
+                            }
                         }
                     }
+
+                    
 
                 }
                 return rooms;
@@ -73,16 +82,10 @@ export const countArray = (array) => {
 
 
 export const ChangeTempBool = (rooms, id) => {
-
-    console.log("från in i ChangeTempBool");
     
     for (let i = 0; i < rooms.length; i++) {
 
-        console.log("från in i for loopen");
-
         if (rooms[i].roomId === id) {
-
-            console.log("från in i if satsen");
 
             rooms[i].tempAlarm = false;
         }
@@ -91,18 +94,19 @@ export const ChangeTempBool = (rooms, id) => {
 }
 
 export const ChangeHumidBool = (rooms, id) => {
-
-    console.log("från ChangeHumidBool");
     
     for (let i = 0; i < rooms.length; i++) {
 
-        console.log("från for loopen");
-
         if (rooms[i].roomId === id) {
-
-            console.log("från if satsen");
+       
             rooms[i].humidAlarm = false;
         }
     }
     return rooms;
+}
+
+
+export const MatchUnit = (rooms, units) => {
+    console.log(rooms);
+    console.log(units);
 }
