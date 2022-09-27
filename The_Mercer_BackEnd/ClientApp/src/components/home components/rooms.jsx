@@ -4,6 +4,10 @@ import { postAlarmToDatabase } from "../../Adapters/Database";
 import { Link } from "react-router-dom";
 import AddNotice from "../AddNotice";
 import { MatchUnit } from "../../Helpers/Calculation";
+import { RiTempColdLine } from 'react-icons/ri'
+import { WiHumidity } from 'react-icons/wi'
+
+
 
 
 export default class Rooms extends React.Component {
@@ -75,15 +79,15 @@ export default class Rooms extends React.Component {
                 {this.props.room.tempAlarm || this.props.room.humidAlarm? <AddNotice msg={`👁‍🗨 ${this.props.room.roomName} has a an alarm!`} type='info' callback={['scrollToElementId', [this.props.room.roomId]]}/> : <></>}
 
                 <h5>{this.props.room.roomName}</h5>
-                <h6>{this.props.room.tempAlarm || this.props.room.humidAlarm ? <>ALARM {this.props.room.tempAlarm ? <p>Temperatur</p> : <></>}{this.props.room.humidAlarm ? <p>Luftfuktighet</p> : <></>} </> : <p className="alarmOk">OK</p>}</h6>
-                <button onClick={this.handleClick.bind(this)} className="alarmBtn">Återställ</button>
+                <h6>{this.props.room.tempAlarm || this.props.room.humidAlarm ? <>ALARM {this.props.room.tempAlarm ? <p>Temperature</p> : <></>}{this.props.room.humidAlarm ? <p>Humidity</p> : <></>} </> : <p className="alarmOk">OK</p>}</h6>
+                <button onClick={this.handleClick.bind(this)} className="alarmBtn">Restore</button>
                 <i className="arrow down" onClick={this.eventHandler}></i>
                 {this.state.showmore === true ?
                     <div className="room-info">
-                        <p>Temperatur: {this.props.room.tempValue} {this.props.room.tempUnit}</p>
+                        <p><RiTempColdLine size={25}/> {this.props.room.tempValue} {this.props.room.tempUnit}</p>
                         {this.props.room.humidValue != null ?
-                            <p>Luftfuktighet: {this.props.room.humidValue} {this.props.room.humidUnit}</p> : <></>}
-                        <p>Uppdaterad: {this.props.room.time}</p>
+                            <p><WiHumidity size={25}/> {this.props.room.humidValue} {this.props.room.humidUnit}</p> : <></>}
+                        <p>Updated: {this.props.room.time}</p>
                         <p><b><Link to={`/alarmdetails/${this.props.room.roomId}`}>Alarm Details</Link></b></p>
                     </div> : <></>}
             </div>
