@@ -6,7 +6,7 @@ const AddNotice = ({ msg, info, callback }) => {
 
     const dispatch = useDispatch();
     useEffect(() => {
-
+        dispatch(addNotice(notice));
     }, [])
 
     const notice = {
@@ -14,8 +14,6 @@ const AddNotice = ({ msg, info, callback }) => {
         type: info,
         callback: callback
     };
-
-    dispatch(addNotice(notice));
 
     return (
         <></>

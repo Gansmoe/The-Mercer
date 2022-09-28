@@ -5,7 +5,7 @@ import NoticeStackCallbacks from '../Helpers/NoticeStackCallbacks';
 
 const Notice = ({ msg, type, callback, id }) => {
     // Class Name is for cosmetic styling purposes. Default options are "info" and "danger".
-    const className = type ? `notice ${type}` : `notice info`; // If left blank it will default to "info"
+    const className = type ? `notice ${type} anim-grow` : `notice info anim-grow`; // If left blank it will default to "info"
 
     const dispatch = useDispatch();
 

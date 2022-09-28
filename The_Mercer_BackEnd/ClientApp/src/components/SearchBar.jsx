@@ -38,7 +38,7 @@ const SearchBar = ({ list, placeholder, Comp, filterprop, customkey, customProp 
                 })
                     .map((entry, key) => {
                         return (
-                            <div key={entry[customkey] ? entry[customkey] : key}>
+                            <div className='anim-fade' key={entry[customkey] ? entry[customkey] : key}>
                                 <Comp room={entry} listitem={entry} customProp={customProp} />  {/* "room" is hard coded due to rooms.jsx component requiring it to be called that. Use listitem instead please. */}
                             </div>
                         );
