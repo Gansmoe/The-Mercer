@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 using The_Mercer_BackEnd.Models;
 
 namespace The_Mercer_BackEnd.DbContext
@@ -19,7 +20,14 @@ namespace The_Mercer_BackEnd.DbContext
         public DbSet<AlarmLog> Alarms { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite(DbPath[1]);
+        {
+           
+            var localPath = Path.Combine(Directory.GetCurrentDirectory(), @"..\");
+            var connectionString = $"Data Source={Path.Combine(localPath, "Mercer.db")}";
+
+            options.UseSqlite(connectionString);
+        }
+            
         //Henke = DbPath[0]
         //Isac = DbPath[1]
         //Christian = DbPath[2]
