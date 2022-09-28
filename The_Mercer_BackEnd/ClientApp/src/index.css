@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap');
+
+
 * {
     margin: 0;
     padding: 0;
@@ -6,12 +9,13 @@
 }
 
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Cormorant Garamond', serif;
     background-color: #f4ebd4;
     height: 100%;
 }
 
 .App {
+    font-family: 'Cormorant Garamond', serif;
     background-color: #f4ebd4;
     display: flex;
     flex-direction: column;
@@ -58,6 +62,7 @@ body {
 
 .notice {
     display: flex;
+    background-color: #7EF47E;
     width: 90%;
     border-radius: 0.5em;
     margin-top: 0.5em;
@@ -216,8 +221,9 @@ a:hover {
     margin: 30px;
 }
 
+
 .no-alarm {
-    background-color: #c6c6ab;
+    background-color: #C2BE95;
     position: relative;
     border-radius: 5px;
     width: 311px;
@@ -227,7 +233,7 @@ a:hover {
 }
 
 .alarm {
-    background-color: #c6c6ab;
+    background-color: #C2BE95;
     position: relative;
     border: rgb(182, 18, 18) solid 2px;
     box-shadow: inset 0 0 20px rgb(255, 0, 0);
@@ -349,7 +355,7 @@ a:hover {
     padding-top: 2px;
     padding-bottom: 2px;
     padding-left: 10px;
-    background-color: rgb(1, 212, 1);
+    background-color: #7EF47E;
     border: 2px solid rgb(73, 73, 73);
 }
 
@@ -360,6 +366,10 @@ a:hover {
     padding-left: 10px;
     background-color: rgb(212, 1, 1);
     border: 2px solid rgb(73, 73, 73);
+}
+
+.room-info>p {
+    font-size: 19.25px;
 }
 
 .anim-fade {
