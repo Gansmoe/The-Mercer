@@ -80,7 +80,7 @@ export default class Rooms extends React.Component {
 
                 <h5>{this.props.room.roomName}</h5>
                 <h6>{this.props.room.tempAlarm || this.props.room.humidAlarm ? <>ALARM {this.props.room.tempAlarm ? <p>Temperature</p> : <></>}{this.props.room.humidAlarm ? <p>Humidity</p> : <></>} </> : <p className="alarmOk">OK</p>}</h6>
-                <button onClick={this.handleClick.bind(this)} className="alarmBtn">Restore</button>
+                {this.props.room.tempAlarm || this.props.room.humidAlarm ? <button onClick={this.handleClick.bind(this)} className="alarmBtn">Restore</button> : <></>}
                 <i className="arrow down" onClick={this.eventHandler}></i>
                 {this.state.showmore === true ?
                     <div className="room-info">
