@@ -22,7 +22,7 @@ function Header() {
   const loggedinfo = isLoggedin ? (
    <>
       <div className="px-3 " style={{color:"#f4e4ae"}}>
-        <p >Welcome, {name}</p>
+        <p className="p-welcome">Welcome, {name}</p>
       </div>{" "}
       <div>
         <Button onClick={logOutUser} variant="success">
