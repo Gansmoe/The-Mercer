@@ -29,12 +29,8 @@ A handy app allowing hotel employees of The Mercer to overlook and manage temper
 >
 > **7.2) OR Navigate to "The-Mercer\" using a terminal and launch the project using a code editor(example: launch VSCode by typing "code .")**
 >
-> **8.1) Adjust the database path within "The_Mercer_BackEnd\Startup.cs" (replace line 41 with: options.UseSqlite( @"Data Source=<ABSOLUTE_PATH>\The-Mercer\Mercer.db")); Edit <ABSOLUTE_PATH> to your local project path.**
+> **8) Build App & Run Server by typing 'dotnet run' within the "The-Mercer/The_Mercer_BackEnd/" folder**
 >
-> **8.2) Adjust the database path within "The_Mercer_BackEnd\DbContext\AppDbContext.cs" (replace line 22 with: => options.UseSqlite(@"Data Source=<ABSOLUTE_PATH>\The-Mercer\Mercer.db")); Edit <ABSOLUTE_PATH> to your local project path.**
->
-> **9) Build App & Run Server by typing 'dotnet run' within the "The-Mercer/The_Mercer_BackEnd/" folder**
->
-> **10) You can now connect to the application on the broadcasted address(default: https://localhost:5001**
+> **9) You can now connect to the application on the broadcasted address(default: https://localhost:5001)**
 >
 >
